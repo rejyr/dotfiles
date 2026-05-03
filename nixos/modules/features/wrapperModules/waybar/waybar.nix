@@ -4,22 +4,8 @@
   ...
 }:
 {
-  flake.nixosModules.waybar =
-    {
-      config,
-      pkgs,
-      lib,
-      ...
-    }:
-    {
-      options.myFeatures.waybar = {
-        battery.enable = lib.mkEnableOption "Waybar Battery";
-      };
-    };
-
   flake.wrapperModules.waybar =
     {
-      config,
       pkgs,
       lib,
       ...
@@ -121,7 +107,7 @@
               "wireplumber"
               "network"
               "cpu"
-              (lib.mkIf config.myFeatures.waybar.battery.enable "battery")
+              "battery"
             ];
           };
           backlight = {
@@ -247,7 +233,6 @@
 
   perSystem =
     {
-      config,
       pkgs,
       lib,
       self',
@@ -256,10 +241,7 @@
     {
       packages.waybar = inputs.wrapper-modules.wrappers.waybar.wrap {
         inherit pkgs;
-        imports = [
-          self.nixosModules.waybar
-          self.wrapperModules.waybar
-        ];
+        imports = [ self.wrapperModules.waybar ];
       };
     };
 }

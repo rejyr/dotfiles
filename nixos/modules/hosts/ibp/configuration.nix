@@ -26,7 +26,6 @@
 
       myFeatureGroups.system.enable = true;
       myFeatureGroups.desktop.enable = true;
-      myFeatures.waybar.battery.enable = lib.mkForce false;
 
       myFeatures.bootloader = lib.mkForce {
         enable = true;

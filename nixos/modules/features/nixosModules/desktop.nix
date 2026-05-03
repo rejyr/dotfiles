@@ -19,7 +19,6 @@
       imports = [
         self.nixosModules.clipboard
         self.nixosModules.fonts
-        self.nixosModules.waybar
       ];
 
       options.myFeatureGroups.desktop = {
@@ -30,7 +29,6 @@
         myFeatures.clipboard.enable = lib.mkDefault true;
         myFeatures.fonts.enable = lib.mkDefault true;
 
-        myFeatures.waybar.battery.enable = lib.mkDefault true;
         programs.niri = {
           enable = true;
           package = selfpkgs.niri;
