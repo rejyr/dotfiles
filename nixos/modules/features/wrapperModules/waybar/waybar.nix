@@ -167,9 +167,12 @@
             on-click-right = "${./scripts/spawn_term.sh} wireplumber";
           };
           network = {
+            format = "󱚵 ";
             format-wifi = "{icon}";
             format-ethernet = "󰈀 ";
+            format-linked = "󱛇 ";
             format-disconnected = "󰖪 ";
+            format-disabled = "󱚼 ";
             tooltip-format = "{ipaddr}\n{essid} ({signalStrength}%)";
             on-click = "${./scripts/spawn_term.sh} network";
             format-icons = [
