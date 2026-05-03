@@ -24,10 +24,10 @@
 
           font = "IosevkaNF 12";
 
-          background-color = "#2d353b70";
-          text-color = "#d3c6aae0";
-          border-color = "#a7c080e0";
-          progress-color = "over #dbbc7fe0";
+          background-color = "#2d353bb0";
+          text-color = "#d3c6aaff";
+          border-color = "#a7c080ff";
+          progress-color = "over #dbbc7fff";
 
           width = 400;
           height = 200;

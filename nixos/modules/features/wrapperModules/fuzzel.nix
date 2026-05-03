@@ -28,16 +28,16 @@
             lines = 5;
           };
           colors = {
-            background = "2d353b70";
-            text = "d3c6aad0";
-            prompt = "d3c6aad0";
-            placeholder = "d3c6aaa0";
-            input = "d3c6aad0";
-            match = "a7c080f0";
+            background = "2d353bb0";
+            text = "d3c6aaff";
+            prompt = "d3c6aaff";
+            placeholder = "d3c6aaff";
+            input = "d3c6aaff";
+            match = "a7c080ff";
             selection = "a7c080a0";
             selection-text = "d3c6aaff";
-            selection-match = "a7c080f0";
-            border = "a7c080e0";
+            selection-match = "a7c080ff";
+            border = "a7c080ff";
           };
           border = {
             radius = 0;
