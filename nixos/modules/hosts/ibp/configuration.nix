@@ -54,6 +54,7 @@
 
       environment.systemPackages = with pkgs; [
         bash
+        nh
         nixfmt
         python3
         rustup
