@@ -32,7 +32,7 @@
             flash = "e67e80";
             flash-alpha = 0.5;
             # Normal/regular colors (color palette 0-7)
-            regular0 = "475258"; # black
+            regular0 = "232a2e"; # black
             regular1 = "e67e80"; # red
             regular2 = "a7c080"; # green
             regular3 = "dbbc7f"; # yellow
@@ -41,7 +41,7 @@
             regular6 = "83c092"; # cyan
             regular7 = "d3c6aa"; # white
             # Bright colors (color palette 8-15)
-            bright0 = "475258"; # bright black
+            bright0 = "232a2e"; # bright black
             bright1 = "e67e80"; # bright red
             bright2 = "a7c080"; # bright green
             bright3 = "dbbc7f"; # bright yellow
