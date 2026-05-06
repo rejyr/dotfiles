@@ -17,6 +17,7 @@
     {
       imports = [
         self.nixosModules.audio
+        self.nixosModules.android
         self.nixosModules.bluetooth
         self.nixosModules.bootloader
         self.nixosModules.geoclue2
@@ -35,6 +36,7 @@
 
       config = lib.mkIf cfg.enable {
         myFeatures.audio.enable = lib.mkDefault true;
+        myFeatures.android.enable = lib.mkDefault true;
         myFeatures.bluetooth.enable = lib.mkDefault true;
         myFeatures.bootloader.enable = lib.mkDefault true;
         myFeatures.geoclue2.enable = lib.mkDefault true;
