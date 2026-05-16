@@ -19,6 +19,7 @@
       imports = [
         self.nixosModules.clipboard
         self.nixosModules.fonts
+        self.nixosModules.photography
       ];
 
       options.myFeatureGroups.desktop = {
@@ -28,6 +29,7 @@
       config = lib.mkIf cfg.enable {
         myFeatures.clipboard.enable = lib.mkDefault true;
         myFeatures.fonts.enable = lib.mkDefault true;
+        myFeatures.photography.enable = lib.mkDefault true;
 
         programs.niri = {
           enable = true;
