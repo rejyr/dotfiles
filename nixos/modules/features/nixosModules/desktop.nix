@@ -44,6 +44,7 @@
           selfpkgs.zathura
 
           libnotify
+          ungoogled-chromium
 
           imv
           mpv
