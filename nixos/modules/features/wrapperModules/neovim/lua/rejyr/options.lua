@@ -64,7 +64,8 @@ vim.wo.signcolumn = 'yes'
 vim.filetype.add { extension = { typ = 'typst' } }
 
 -- set border type
-vim.o.winborder = 'solid'
+vim.g.border = 'single'
+vim.o.winborder = vim.g.border
 
 vim.diagnostic.config {
   signs = {
