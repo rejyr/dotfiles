@@ -16,7 +16,7 @@
       options = {
         dynamicMode = lib.mkOption {
           type = lib.types.bool;
-          default = false;
+          default = true;
           description = ''
             If true, use impure config instead for fast edits
 
@@ -48,6 +48,7 @@
             nvim-navbuddy
             nvim-navic
             nvim-treesitter.withAllGrammars
+            qmk-nvim
             quicker-nvim
             rainbow-delimiters-nvim
             vim-fugitive
