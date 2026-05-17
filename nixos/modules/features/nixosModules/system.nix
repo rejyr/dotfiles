@@ -27,7 +27,6 @@
         self.nixosModules.shellTools
         self.nixosModules.texlive
         self.nixosModules.tzLocale
-        self.nixosModules.udevExtraRules
       ];
 
       options.myFeatureGroups.system = {
@@ -46,7 +45,6 @@
         myFeatures.shellTools.enable = lib.mkDefault true;
         myFeatures.texlive.enable = lib.mkDefault true;
         myFeatures.tzLocale.enable = lib.mkDefault true;
-        myFeatures.udevExtraRules.enable = lib.mkDefault true;
       };
     };
 }
