@@ -6,12 +6,35 @@
 {
   flake.wrapperModules.neovim =
     {
+      config,
       pkgs,
       lib,
+      wlib,
       ...
     }:
     {
+      options = {
+        dynamicMode = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = ''
+            If true, use impure config instead for fast edits
+
+            Both versions of the package may be installed simultaneously
+          '';
+        };
+        initLua = lib.mkOption {
+          type = wlib.types.stringable;
+          default = ./.;
+        };
+        dynamicInitLua = lib.mkOption {
+          type = lib.types.either wlib.types.stringable lib.types.luaInline;
+          default = lib.generators.mkLuaInline "vim.uv.os_homedir() .. '/dotfiles/nixos/modules/features/wrapperModules/neovim/'";
+        };
+      };
       config = {
+        settings.config_directory = if config.dynamicMode then config.dynamicInitLua else config.initLua;
+
         specs.plugins = {
           before = [ "INIT_MAIN" ];
           data = with pkgs.vimPlugins; [
@@ -57,7 +80,6 @@
           stylua
           nixfmt
         ];
-        settings.config_directory = ./.;
       };
     };
 
