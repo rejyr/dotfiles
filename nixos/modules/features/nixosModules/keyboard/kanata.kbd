@@ -1,0 +1,88 @@
+(defcfg
+    process-unmapped-keys yes
+    log-layer-changes yes
+)
+
+(defsrc
+  esc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc home
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret       pgdn
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft           end
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayer qwerty
+  _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    @hlm
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _         _
+  _    _    _    _    _    _    _    _    _    _    _    _              _
+  _    _    _              _              _    _    _
+)
+
+(deflayer magic-sturdy
+  _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    @hlq
+  _    v    m    l    c    p    b    @mgc u    o    q    _    _    _    _
+  @cap s    t    r    d    y    f    n    e    a    i    _    _         _
+  _    x    k    j    g    w    z    h    ,    .    ;    _              _
+  _    _    _              _              @mrp _    _
+)
+
+(defvar
+    tap-time 200
+    hold-time 250
+)
+
+(defalias
+    cpw (caps-word 2000)
+    cap (tap-hold-press $tap-time $hold-time esc @cpw)
+    ;; home layer-switch magic-sturdy
+    hlm (tap-hold-press $tap-time $hold-time home (layer-switch magic-sturdy))
+    ;; home layer-switch qwerty
+    hlq (tap-hold-press $tap-time $hold-time home (layer-switch qwerty))
+    ;; magic-sturdy magic key
+    mgc (switch
+        ((key-history a 1)) o break
+        ((key-history b 1)) (macro e f o r e) break
+        ((key-history c 1)) y break
+        ((key-history d 1)) y break
+        ((key-history e 1)) u break
+        ((key-history f 1)) XX break
+        ((key-history g 1)) y break
+        ((key-history h 1)) XX break
+        ((key-history i 1)) (macro o n) break
+        ((key-history j 1)) (macro u s t) break
+        ((key-history k 1)) s break
+        ((key-history l 1)) k break
+        ((key-history m 1)) (macro e n t) break
+        ((key-history n 1)) (macro i o n) break
+        ((key-history o 1)) a break
+        ((key-history p 1)) y break
+        ((key-history q 1)) (macro u e n) break
+        ((key-history r 1)) l break
+        ((key-history s 1)) k break
+        ((key-history t 1)) (macro m e n t) break
+        ((key-history u 1)) e break
+        ((key-history v 1)) (macro e r) break
+        ((key-history w 1)) (macro h i c h) break
+        ((key-history x 1)) (macro e s ) break
+        ((key-history y 1)) p break
+        ((key-history z 1)) XX break
+        ((key-history spc 1)) (macro t h e) break
+        ((key-history , 1)) (macro spc b u t) break
+        ((key-history . 1)) (macro . /) break
+    )
+    ;; magic-sturdy repeat key
+    mrp (switch
+        ((key-history a 1)) (macro n d) break
+        ((key-history i 1)) (macro n g) break
+        ((key-history n 1)) (macro f) break
+        ((key-history y 1)) (macro o u) break
+        ((key-history spc 1)) (macro f o r) break
+        ((key-history , 1)) (macro spc a n d) break
+        ((key-history . 1)) (macro o r g) break
+        () rpt break
+    )
+)
