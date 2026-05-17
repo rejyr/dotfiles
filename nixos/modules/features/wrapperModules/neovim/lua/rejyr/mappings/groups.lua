@@ -27,6 +27,14 @@ local groups = {
       { 'gri', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = 'Implementation' } },
       { 'grr', '<cmd>lua vim.lsp.buf.references()<cr>', { desc = 'References' } },
       { 'grn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Rename' } },
+      {
+        'gvt',
+        function()
+          local new_value = not vim.diagnostic.config().virtual_lines
+          vim.diagnostic.config { virtual_lines = new_value }
+        end,
+        { desc = 'Toggle Virtual Diagnostic Lines' },
+      },
     },
   },
   {

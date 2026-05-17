@@ -26,6 +26,9 @@ end
 vim.api.nvim_create_user_command('W', 'w', {})
 vim.api.nvim_create_user_command('Q', 'q', {})
 
+-- project-local config
+vim.o.exrc = true
+
 -- lightbulb time
 vim.o.updatetime = 100
 
