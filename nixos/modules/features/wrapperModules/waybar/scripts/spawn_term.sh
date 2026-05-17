@@ -26,7 +26,7 @@ main() {
   "mpris")
     spawn_term rmpc left
     ;;
-  "custom-bluetooth")
+  "bluetooth")
     spawn_term bluetui bottom-left
     ;;
   "wireplumber")

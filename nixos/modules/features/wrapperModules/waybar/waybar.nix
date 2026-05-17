@@ -103,7 +103,7 @@
             modules = [
               "backlight"
               "custom/clipboard"
-              "custom/bluetooth"
+              "bluetooth"
               "wireplumber"
               "network"
               "cpu"
@@ -136,12 +136,12 @@
             tooltip = false;
             on-click = "${./scripts/clipboard_menu.sh}";
           };
-          "custom/bluetooth" = {
-            format = "{}";
-            exec = "${./scripts/bluetooth_status.sh}";
-            interval = 5;
+          "bluetooth" = {
+            format = "󰂲";
+            format-on = "󰂯";
+            format-connected = "󰂯";
             tooltip = false;
-            on-click = "${./scripts/spawn_term.sh} custom-bluetooth";
+            on-click = "${./scripts/spawn_term.sh} bluetooth";
           };
           wireplumber = {
             scroll-step = 5;
