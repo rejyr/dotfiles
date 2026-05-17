@@ -40,6 +40,8 @@
         myFeatures.bootloader.enable = lib.mkDefault true;
         myFeatures.geoclue2.enable = lib.mkDefault true;
         myFeatures.keyboard.enable = lib.mkDefault true;
+        myFeatures.keyboard.qmk.enable = lib.mkDefault true;
+        myFeatures.keyboard.kanata.enable = lib.mkDefault true;
         myFeatures.networking.enable = lib.mkDefault true;
         myFeatures.powerManagement.enable = lib.mkDefault true;
         myFeatures.shellTools.enable = lib.mkDefault true;

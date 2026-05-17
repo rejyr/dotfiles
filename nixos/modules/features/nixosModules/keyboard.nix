@@ -17,6 +17,8 @@
     {
       options.myFeatures.keyboard = {
         enable = lib.mkEnableOption "Keyboard";
+        qmk.enable = lib.mkEnableOption "QMK";
+        kanata.enable = lib.mkEnableOption "Kanata";
       };
 
       config = lib.mkIf cfg.enable {
@@ -25,18 +27,26 @@
           variant = "";
         };
 
-        services.udev.extraRules = ''
-          KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
-          KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-        '';
+        services.udev.extraRules =
+          ""
+          + lib.optionalString cfg.kanata.enable ''
+            KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
+          ''
+          + lib.optionalString cfg.qmk.enable ''
+            KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+          '';
 
-        hardware.keyboard.qmk.enable = true;
+        hardware.keyboard.qmk.enable = cfg.qmk.enable;
 
-        environment.systemPackages = with pkgs; [
-          via
-          vial
-          qmk-udev-rules
-        ];
+        environment.systemPackages =
+          with pkgs;
+          [
+          ]
+          ++ lib.optionals cfg.qmk.enable [
+            via
+            vial
+            qmk-udev-rules
+          ];
       };
     };
 }
