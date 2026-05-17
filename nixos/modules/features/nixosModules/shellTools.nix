@@ -36,6 +36,7 @@
           jq
           ripgrep
           rsync
+          skim
           unrar
           unzip
           yazi

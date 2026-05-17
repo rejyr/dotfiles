@@ -7,12 +7,12 @@ $env.MANPAGER = "nvim +Man!"
 
 alias blctl = bluetoothctl
 alias n = nvim
-alias nf = nvim (fzf)
+alias nf = nvim (sk)
 alias rc = rmpc
 alias systl = systemctl
 alias tree = eza -TF
 alias za = zathura
-alias zf = zathura (fzf) &
+alias zf = zathura (sk) &
 
 do {
   let autoload_dir = ($nu.data-dir | path join "vendor/autoload")

@@ -41,6 +41,7 @@
             blink-cmp
             conform-nvim
             everforest
+            fzf-lua
             mini-nvim
             nui-nvim
             nvim-lspconfig
