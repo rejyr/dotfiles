@@ -47,6 +47,15 @@
         myFeatures.shellTools.enable = lib.mkDefault true;
         myFeatures.texlive.enable = lib.mkDefault true;
         myFeatures.tzLocale.enable = lib.mkDefault true;
+
+        environment.systemPackages = with pkgs; [
+          bash
+          nh
+          nixfmt
+          python3
+          rustup
+          uv
+        ];
       };
     };
 }

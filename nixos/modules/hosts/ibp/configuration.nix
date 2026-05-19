@@ -52,14 +52,7 @@
 
       nixpkgs.config.allowUnfree = true;
 
-      environment.systemPackages = with pkgs; [
-        bash
-        nh
-        nixfmt
-        python3
-        rustup
-        uv
-      ];
+      environment.systemPackages = with pkgs; [];
 
       nix.gc = {
         automatic = true;
