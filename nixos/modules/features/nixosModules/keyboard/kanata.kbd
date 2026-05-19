@@ -1,10 +1,11 @@
 (defcfg
     process-unmapped-keys yes
     log-layer-changes yes
+    movemouse-inherit-accel-state yes
 )
 
 (defsrc
-  esc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  del
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc home
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup
   caps a    s    d    f    g    h    j    k    l    ;    '    ret       pgdn
@@ -13,31 +14,59 @@
 )
 
 (deflayer qwerty
-  _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    @hlm
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _         _
+  @ext _    _    _    _    _    _    _    _    _    _    _    _         _
   _    _    _    _    _    _    _    _    _    _    _    _              _
   _    _    _              _              _    _    _
 )
 
+;; https://getreuer.info/posts/keyboards/alt-layouts/index.html
+;; https://github.com/Ikcelaks/keyboard_layouts/blob/main/magic_sturdy/magic_sturdy.md
 (deflayer magic-sturdy
-  _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    @hlq
   _    v    m    l    c    p    b    @mgc u    o    q    _    _    _    _
-  @cap s    t    r    d    y    f    n    e    a    i    _    _         _
+  @ext s    t    r    d    y    f    n    e    a    i    _    _         _
   _    x    k    j    g    w    z    h    ,    .    ;    _              _
   _    _    _              _              @mrp _    _
+)
+
+;; https://dreymar.colemak.org/layers-extend.html
+(deflayer extend
+  _    pp   prev next _    mute vold volu _    brup brdn _    _    _
+  @cpw f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    @hlm
+  _    esc  @mwu bck  fwd  @mmu pgup home up   end  del  esc  ins  _    _
+  _    lalt @mwd lsft lctl @mmd pgdn left down rght bspc lmet prnt      _
+  _    C-z  C-x  C-c  C-v  mlft mmid mrgt @mml @mmr _    _              _
+  _    _    _              _              @cpw _    _
 )
 
 (defvar
     tap-time 200
     hold-time 250
+    ;; https://github.com/qmk/qmk_firmware/blob/master/docs/features/mouse_keys.md
+    mw-initial-v 32
+    mw-maximum-v 1200
+    mw-accel 1.02
+    mw-decel 0.20
+    mm-interval 20
+    mm-acceleration-time 1000
+    mm-min 8
+    mm-max 80
 )
 
 (defalias
     cpw (caps-word 2000)
-    cap (tap-hold-press $tap-time $hold-time esc @cpw)
+    ext (layer-while-held extend)
+    ;; mouse keys
+    mwu (mwheel-accel-up   $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
+    mwd (mwheel-accel-down $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
+    mmu (movemouse-accel-up $mm-interval $mm-acceleration-time $mm-min $mm-max)
+    mmd (movemouse-accel-down $mm-interval $mm-acceleration-time $mm-min $mm-max)
+    mml (movemouse-accel-left $mm-interval $mm-acceleration-time $mm-min $mm-max)
+    mmr (movemouse-accel-right $mm-interval $mm-acceleration-time $mm-min $mm-max)
     ;; home layer-switch magic-sturdy
     hlm (tap-hold-press $tap-time $hold-time home (layer-switch magic-sturdy))
     ;; home layer-switch qwerty
