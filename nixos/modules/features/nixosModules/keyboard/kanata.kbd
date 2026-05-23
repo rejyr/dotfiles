@@ -24,12 +24,13 @@
 
 ;; https://getreuer.info/posts/keyboards/alt-layouts/index.html
 ;; https://github.com/Ikcelaks/keyboard_layouts/blob/main/magic_sturdy/magic_sturdy.md
+;; angle mod and b-z swap to avoid qwerty b and y positions
 (deflayer magic-sturdy
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    @hlq
-  _    v    m    l    c    p    b    @mgc u    o    q    _    _    _    _
+  _    v    m    l    c    p    z    @mgc u    o    q    _    _    _    _
   @ext s    t    r    d    y    f    n    e    a    i    _    _         _
-  _    x    k    j    g    w    z    h    ,    .    ;    _              _
+  _    k    j    g    w    x    b    h    ,    .    ;    _              _
   _    _    _              _              @mrp _    _
 )
 
