@@ -18,30 +18,43 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    @hlm
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
   @ext _    _    _    _    _    _    _    _    _    _    _    _         _
-  _    _    _    _    _    _    _    _    _    _    _    _              _
+  _    _    _    _    _    _    _    _    _    _    _    @sym           _
   _    _    _              _              _    _    _
 )
 
 ;; https://getreuer.info/posts/keyboards/alt-layouts/index.html
 ;; https://github.com/Ikcelaks/keyboard_layouts/blob/main/magic_sturdy/magic_sturdy.md
-;; angle mod and b-z swap to avoid qwerty b and y positions
+;; https://dreymar.colemak.org/ergo-mods.html#angle-wide
+;; angle+wide mod, b-z swap
 (deflayer magic-sturdy
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    @hlq
-  _    v    m    l    c    p    z    @mgc u    o    q    _    _    _    _
-  @ext s    t    r    d    y    f    n    e    a    i    _    _         _
-  _    k    j    g    w    x    b    h    ,    .    ;    _              _
+  _    v    m    l    c    p    [    z    @mgc u    o    q    '    _    _
+  @ext s    t    r    d    y    ]    f    n    e    a    i    _         _
+  _    k    j    g    w    x    ;    b    h    ,    .    @sym           _
   _    _    _              _              @mrp _    _
 )
 
 ;; https://dreymar.colemak.org/layers-extend.html
+;; hjkl arrows
 (deflayer extend
   _    pp   prev next _    mute vold volu _    brup brdn _    _    _
   @cpw f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    @hlm
-  _    esc  @mwu bck  fwd  @mmu pgup home up   end  del  esc  ins  _    _
-  _    lalt @mwd lsft lctl @mmd pgdn left down rght bspc lmet prnt      _
+  _    esc  @mwu bck  fwd  @mmu pgup home end  bspc del  esc  ins  _    _
+  _    lalt @mwd lsft lctl @mmd pgdn left down up   rght lmet prnt      _
   _    C-z  C-x  C-c  C-v  mlft mmid mrgt @mml @mmr _    _              _
   _    _    _              _              @cpw _    _
+)
+
+;; https://getreuer.info/posts/keyboards/symbol-layer/index.html
+;; getreuer v2
+(deflayer symbol
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    `    S-,  S-.  -    S-\  XX   S-6  S-[  S-]  S-4  \    '    _    _
+  @ext S-1  S-8  /    =    S-7  XX   S-3  S-9  S-0  ;    S-'  _         _
+  _    S-`  S-=  [    ]    S-5  XX   S-2  S-;  S-/  S--  _              _
+  _    _    _              _              rpt  _    _
 )
 
 (defvar
@@ -61,6 +74,7 @@
 (defalias
     cpw (caps-word 2000)
     ext (layer-while-held extend)
+    sym (layer-while-held symbol)
     ;; mouse keys
     mwu (mwheel-accel-up   $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
     mwd (mwheel-accel-down $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
