@@ -42,7 +42,7 @@
   @cpw f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    @hlm
   _    esc  @mwu bck  fwd  @mmu pgup home end  bspc del  esc  ins  _    _
   _    lalt @mwd lsft lctl @mmd pgdn left down up   rght lmet prnt      _
-  _    C-z  C-x  C-c  C-v  mlft mmid mrgt @mml @mmr _    _              _
+  _    C-z  C-x  C-c  C-v  mlft mmid mrgt @mml @mmr ralt _              _
   _    _    _              _              @cpw _    _
 )
 
