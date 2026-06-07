@@ -23,6 +23,7 @@
         self.nixosModules.geoclue2
         self.nixosModules.keyboard
         self.nixosModules.networking
+        self.nixosModules.printing
         self.nixosModules.powerManagement
         self.nixosModules.shellTools
         self.nixosModules.texlive
@@ -43,6 +44,7 @@
         myFeatures.keyboard.qmk.enable = lib.mkDefault true;
         myFeatures.keyboard.kanata.enable = lib.mkDefault true;
         myFeatures.networking.enable = lib.mkDefault true;
+        myFeatures.printing.enable = lib.mkDefault true;
         myFeatures.powerManagement.enable = lib.mkDefault true;
         myFeatures.shellTools.enable = lib.mkDefault true;
         myFeatures.texlive.enable = lib.mkDefault true;
