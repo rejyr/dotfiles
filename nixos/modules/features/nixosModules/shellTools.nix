@@ -40,6 +40,8 @@
           unrar
           unzip
           yazi
+
+          imagemagick
         ];
       };
     };
