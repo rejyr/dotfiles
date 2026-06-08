@@ -188,6 +188,7 @@ later(function()
       },
     },
   }
+  vim.cmd 'FzfLua register_ui_select'
 end)
 
 -- formatter
