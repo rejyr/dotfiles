@@ -22,6 +22,7 @@
         self.nixosModules.systemGroup
         self.nixosModules.desktopGroup
         self.nixosModules.nvidia
+        self.nixosModules.userRejyr
       ];
 
       myFeatureGroups.system.enable = true;
@@ -38,20 +39,10 @@
 
       myFeatures.nvidia.enable = true;
 
+      myFeatures.userRejyr.enable = true;
       networking.hostName = "ibp";
-
-      users.users.rejyr = {
-        isNormalUser = true;
-        description = "Jerry Wang";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-        ];
-        packages = with pkgs; [ ];
-      };
 
       ];
       system.stateVersion = "25.11";
-      home-manager.users.rejyr = self.homeModules.rejyrModule;
     };
 }

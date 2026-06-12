@@ -21,6 +21,7 @@
         self.nixosModules.toplapHardware
         self.nixosModules.systemGroup
         self.nixosModules.desktopGroup
+        self.nixosModules.userRejyr
       ];
 
       myFeatureGroups.system.enable = true;
@@ -35,33 +36,11 @@
         '';
       };
 
+      myFeatures.userRejyr.enable = true;
       networking.hostName = "toplap";
-
-      users.users.rejyr = {
-        isNormalUser = true;
-        description = "Jerry Wang";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-        ];
-        packages = with pkgs; [ ];
-      };
-
-      nixpkgs.config.allowUnfree = true;
 
       environment.systemPackages = with pkgs; [];
 
-      nix.gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
-      };
-
-      nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
       system.stateVersion = "25.11";
-      home-manager.users.rejyr = self.homeModules.rejyrModule;
     };
 }
