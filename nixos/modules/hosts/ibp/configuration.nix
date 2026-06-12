@@ -50,19 +50,6 @@
         packages = with pkgs; [ ];
       };
 
-      nixpkgs.config.allowUnfree = true;
-
-      environment.systemPackages = with pkgs; [];
-
-      nix.gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
-      };
-
-      nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
       ];
       system.stateVersion = "25.11";
       home-manager.users.rejyr = self.homeModules.rejyrModule;
