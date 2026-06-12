@@ -42,7 +42,6 @@
       myFeatures.userRejyr.enable = true;
       networking.hostName = "ibp";
 
-      ];
       system.stateVersion = "25.11";
     };
 }
