@@ -26,6 +26,7 @@
           extraGroups = [
             "networkmanager"
             "wheel"
+            "dialout"
           ];
           packages = with pkgs; [ ];
         };
