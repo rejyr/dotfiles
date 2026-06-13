@@ -12,7 +12,7 @@
     }:
     {
       config = {
-        extraPackages = with pkgs; [
+        runtimePkgs = with pkgs; [
           atuin
           carapace
           starship

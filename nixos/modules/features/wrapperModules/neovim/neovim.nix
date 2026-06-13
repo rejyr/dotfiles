@@ -56,7 +56,7 @@
             yanky-nvim
           ];
         };
-        extraPackages = with pkgs; [
+        runtimePkgs = with pkgs; [
           basedpyright
           bash-language-server
           clang-tools

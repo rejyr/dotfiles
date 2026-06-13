@@ -15,7 +15,7 @@
     in
     {
       config = {
-        extraPackages = with pkgs; [
+        runtimePkgs = with pkgs; [
           brightnessctl
           selfpkgs.gammastep
           swaybg
