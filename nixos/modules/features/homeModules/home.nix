@@ -32,6 +32,7 @@
     { pkgs, ... }:
     {
       imports = [
+        self.homeModules.cargo
         self.homeModules.git
         self.homeModules.librewolf
         self.homeModules.mpd

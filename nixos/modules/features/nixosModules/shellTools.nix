@@ -29,16 +29,19 @@
 
           bat
           bottom
+          clang
           dust
           eza
           fd
           fzf
+          gcc
           jq
           ripgrep
           rsync
           skim
           unrar
           unzip
+          wild
           yazi
           zip
 
