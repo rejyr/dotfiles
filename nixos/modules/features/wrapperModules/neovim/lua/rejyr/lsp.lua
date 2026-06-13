@@ -49,7 +49,7 @@ local lsp_servers = {
   'jsonls',
   'lua_ls',
   'nil_ls',
-  'rust_analyzer',
+  -- 'rust_analyzer', -- let rustacean set up rust_analyzer
   'sqls',
   'texlab',
   'ts_ls',

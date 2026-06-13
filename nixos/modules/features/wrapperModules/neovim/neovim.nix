@@ -51,6 +51,7 @@
             qmk-nvim
             quicker-nvim
             rainbow-delimiters-nvim
+            rustaceanvim
             vim-fugitive
             vimtex
             yanky-nvim
