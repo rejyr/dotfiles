@@ -40,9 +40,9 @@
 (deflayer extend
   _    pp   prev next _    mute vold volu _    brup brdn _    _    _
   @cpw f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    @hlm
-  _    esc  @mwu bck  fwd  @mmu pgup home end  bspc del  esc  ins  _    _
-  _    lalt @mwd lsft lctl @mmd pgdn left down up   rght lmet prnt      _
-  _    C-z  C-x  C-c  C-v  mlft mmid mrgt @mml @mmr ralt _              _
+  _    C-f  bck  fwd  esc  ins  XX   pgup home end  del  @cpw _    _    _
+  _    @osm @osa @osc @oss ralt XX   pgdn left down up   rght prnt      _
+  @mse C-z  C-x  C-c  C-v  lmet XX   tab  bspc ret  @rpa _              _
   _    _    _              _              @cpw _    _
 )
 
@@ -52,14 +52,25 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    `    S-,  S-.  -    S-\  XX   S-6  S-[  S-]  S-4  \    '    _    _
-  @ext S-1  S-8  /    =    S-7  XX   S-3  S-9  S-0  ;    S-'  _         _
-  _    S-`  S-=  [    ]    S-5  XX   S-2  S-;  S-/  S--  _              _
+  @ext S-1  S-8  /    =    S-7  XX   S-3  S-9  S-0  ;    S--  _         _
+  _    S-`  S-=  [    ]    S-5  XX   S-2  S-;  S-/  S-'  _              _
   _    _    _              _              rpt  _    _
+)
+
+(deflayer mouse
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    @osm @osa @osc @oss _    _    _    @mml @mmd @mmu @mmr _         _
+  _    _    mmid mrgt mlft _    _    @mwl @mwd @mwu @mwr _              _
+  _    _    _              _              _    _    _
 )
 
 (defvar
     tap-time 200
     hold-time 250
+    caps-word-timeout 2000
+    one-shot-timeout 2000
     ;; https://github.com/qmk/qmk_firmware/blob/master/docs/features/mouse_keys.md
     mw-initial-v 32
     mw-maximum-v 1200
@@ -72,12 +83,21 @@
 )
 
 (defalias
-    cpw (caps-word 2000)
+    rpa rpt-any
+    cpw (caps-word $caps-word-timeout)
     ext (layer-while-held extend)
     sym (layer-while-held symbol)
+    mse (layer-while-held mouse)
+    ;; one shot mods
+    osm (one-shot $one-shot-timeout lmet)
+    osa (one-shot $one-shot-timeout lalt)
+    osc (one-shot $one-shot-timeout lctl)
+    oss (one-shot $one-shot-timeout lsft)
     ;; mouse keys
     mwu (mwheel-accel-up   $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
     mwd (mwheel-accel-down $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
+    mwl (mwheel-accel-left  $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
+    mwr (mwheel-accel-right $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
     mmu (movemouse-accel-up $mm-interval $mm-acceleration-time $mm-min $mm-max)
     mmd (movemouse-accel-down $mm-interval $mm-acceleration-time $mm-min $mm-max)
     mml (movemouse-accel-left $mm-interval $mm-acceleration-time $mm-min $mm-max)
