@@ -20,6 +20,7 @@
         self.nixosModules.android
         self.nixosModules.bluetooth
         self.nixosModules.bootloader
+        self.nixosModules.docker
         self.nixosModules.geoclue2
         self.nixosModules.keyboard
         self.nixosModules.networking
@@ -40,6 +41,7 @@
         myFeatures.android.enable = lib.mkDefault true;
         myFeatures.bluetooth.enable = lib.mkDefault true;
         myFeatures.bootloader.enable = lib.mkDefault true;
+        myFeatures.docker.enable = lib.mkDefault true;
         myFeatures.geoclue2.enable = lib.mkDefault true;
         myFeatures.keyboard.enable = lib.mkDefault true;
         myFeatures.keyboard.qmk.enable = lib.mkDefault true;
