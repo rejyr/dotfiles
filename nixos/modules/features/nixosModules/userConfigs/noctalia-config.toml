@@ -25,7 +25,7 @@ margin_edge = 0
 margin_ends = 0
 radius = 0
 scale = 1.2000000104308128
-start = [ "launcher", "clock", "date", "weather", "media", "audio_visualizer" ]
+start = [ "launcher", "clock", "weather", "media", "audio_visualizer" ]
 thickness = 40
 widget_spacing = 12
 
