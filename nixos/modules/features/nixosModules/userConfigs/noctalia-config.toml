@@ -8,7 +8,6 @@ enabled = true
 background_opacity = 0.90000000000000002
 center = [ "workspaces" ]
 end = [
-    "media",
     "tray",
     "notifications",
     "clipboard",
@@ -19,13 +18,14 @@ end = [
     "cpu",
     "battery",
     "ram",
+    "power_profile",
     "session"
 ]
 margin_edge = 0
 margin_ends = 0
 radius = 0
 scale = 1.2000000104308128
-start = [ "launcher", "clock", "date", "weather", "audio_visualizer" ]
+start = [ "launcher", "clock", "date", "weather", "media", "audio_visualizer" ]
 thickness = 40
 widget_spacing = 12
 
@@ -186,6 +186,9 @@ transition = [ "wipe" ]
 mirrored = false
 
 [widget.cpu]
+show_label = false
+
+[widget.network]
 show_label = false
 
 [widget.ram]

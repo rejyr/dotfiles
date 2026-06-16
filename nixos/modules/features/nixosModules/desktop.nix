@@ -40,9 +40,11 @@
           package = selfpkgs.niri;
         };
 
+        hjem.users.rejyr.files.".config/noctalia/noctalia-config.toml".source = ./userConfigs/noctalia-config.toml;
+
         environment.systemPackages = with pkgs; [
           selfpkgs.foot
-          selfpkgs.noctalia
+          inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
           selfpkgs.zathura
 
           librewolf
