@@ -1,0 +1,196 @@
+[audio]
+enable_overdrive = true
+
+[backdrop]
+enabled = true
+
+[bar.default]
+background_opacity = 0.90000000000000002
+center = [ "workspaces" ]
+end = [
+    "media",
+    "tray",
+    "notifications",
+    "clipboard",
+    "network",
+    "bluetooth",
+    "volume",
+    "brightness",
+    "cpu",
+    "battery",
+    "ram",
+    "session"
+]
+margin_edge = 0
+margin_ends = 0
+radius = 0
+scale = 1.2000000104308128
+start = [ "launcher", "clock", "date", "weather", "audio_visualizer" ]
+thickness = 40
+widget_spacing = 12
+
+[calendar]
+enabled = true
+
+[[control_center.shortcuts]]
+type = "nightlight"
+
+[[control_center.shortcuts]]
+type = "notification"
+
+[[control_center.shortcuts]]
+type = "media"
+
+[[control_center.shortcuts]]
+type = "session"
+
+[desktop_widgets]
+enabled = false
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@HDMI-A-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 960.0
+    cy = 1004.0
+    output = "DP-2"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_login_button = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1280.0
+    cy = 1317.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_login_button = true
+
+[nightlight]
+enabled = true
+temperature_night = 3500
+
+[notification]
+background_opacity = 0.79999998211860657
+
+[osd]
+background_opacity = 0.80000000000000004
+
+[shell]
+corner_radius_scale = 0.0
+font_family = "Iosevka NF"
+niri_overview_type_to_launch_enabled = true
+
+    [shell.animation]
+    enabled = false
+
+    [shell.panel]
+    control_center_placement = "floating"
+    open_near_click_control_center = true
+    session_placement = "floating"
+    transparency_mode = "glass"
+    wallpaper_placement = "floating"
+
+    [shell.screenshot]
+    directory = "/home/rejyr/Pictures/Screenshots"
+
+[theme]
+builtin = "Ayu"
+community_palette = "Everforest"
+source = "community"
+wallpaper_scheme = "m3-monochrome"
+
+    [theme.templates]
+    builtin_ids = [ "cava", "foot", "gtk3", "gtk4", "kcolorscheme", "niri", "qt", "starship" ]
+    community_ids = [ "neovim", "steam", "yazi", "zathura" ]
+    enable_builtin_templates = false
+    enable_community_templates = false
+
+[wallpaper]
+directory = "/home/rejyr/dotfiles/wallpapers"
+transition = [ "wipe" ]
+
+    [wallpaper.default]
+    path = "/home/rejyr/dotfiles/wallpapers/wallpaper.jpg"
+
+    [wallpaper.last]
+    path = "/home/rejyr/dotfiles/wallpapers/wallpaper.jpg"
+
+    [wallpaper.monitors.DP-2]
+    path = "/home/rejyr/dotfiles/wallpapers/wallpaper.jpg"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/rejyr/dotfiles/wallpapers/wallpaper.jpg"
+
+    [[wallpaper.favorite]]
+    community_palette = "Everforest"
+    palette_source = "community"
+    path = "/home/rejyr/dotfiles/wallpapers/wallpaper.jpg"
+    theme_mode = "dark"
+
+[widget.audio_visualizer]
+mirrored = false
+
+[widget.cpu]
+show_label = false
+
+[widget.ram]
+show_label = false
+
+[widget.workspaces]
+display = "none"
+hide_when_empty = true

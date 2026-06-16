@@ -42,9 +42,7 @@
 
         environment.systemPackages = with pkgs; [
           selfpkgs.foot
-          selfpkgs.fuzzel
-          selfpkgs.mako
-          selfpkgs.waybar
+          selfpkgs.noctalia
           selfpkgs.zathura
 
           librewolf

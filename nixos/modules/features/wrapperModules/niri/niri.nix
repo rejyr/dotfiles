@@ -16,11 +16,6 @@
     {
       config = {
         runtimePkgs = with pkgs; [
-          brightnessctl
-          selfpkgs.gammastep
-          swaybg
-          swayidle
-          selfpkgs.swaylock
           xdg-desktop-portal-gnome
           xwayland-satellite
         ];
@@ -38,17 +33,10 @@
             };
             # TODO: niri outputs
             outputs = { };
-            # TODO: more niri startup
             spawn-at-startup = [
-              "waybar"
-              "mako"
-              "mpdris2-rs"
-              "gammastep"
+              "noctalia"
             ];
             spawn-sh-at-startup = [
-              "swayidle -w before-sleep 'playerctl pause; swaylock -f'"
-              "swaybg -m fill -i ~/dotfiles/wallpapers/wallpaper.jpg"
-              "wl-paste --watch cliphist store"
             ];
             input = {
               warp-mouse-to-focus = yes;
@@ -72,24 +60,16 @@
             layer-rules = [
               {
                 matches = [
-                  { namespace = "^launcher$"; }
-                  { namespace = "^notifications$"; }
-                  { namespace = "^waybar$"; }
+                  { namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"; }
                 ];
                 background-effect = {
-                  blur = true;
                   xray = false;
                 };
               }
               {
                 matches = [
-                  { namespace = "^launcher$"; }
-                  { namespace = "^notifications$"; }
+                  { namespace = "^noctalia-backdrop"; }
                 ];
-                shadow.on = yes;
-              }
-              {
-                matches = [ { namespace = "^wallpaper$"; } ];
                 place-within-backdrop = true;
               }
             ];
@@ -103,59 +83,15 @@
                 ];
                 open-floating = true;
               }
-
-              {
-                matches = [
-                  { app-id = "^foot-floating"; }
-                ];
-                open-floating = true;
-              }
               {
                 matches = [
                   {
-                    app-id = "^foot-floating";
-                    title = "from-waybar";
+                    app-id = "dev.noctalia.Noctalia.Settings";
                   }
                 ];
-                default-column-width.proportion = 0.4;
-                default-window-height.proportion = 0.5;
-              }
-
-              {
-                matches = [
-                  { app-id = "floating-to-top-left$"; }
-                ];
-                default-floating-position = _: {
-                  props = {
-                    x = 0;
-                    y = 0;
-                    relative-to = "top-left";
-                  };
-                };
-              }
-              {
-                matches = [
-                  { app-id = "floating-to-left$"; }
-                ];
-                default-floating-position = _: {
-                  props = {
-                    x = 0;
-                    y = 0;
-                    relative-to = "left";
-                  };
-                };
-              }
-              {
-                matches = [
-                  { app-id = "floating-to-bottom-left$"; }
-                ];
-                default-floating-position = _: {
-                  props = {
-                    x = 0;
-                    y = 0;
-                    relative-to = "bottom-left";
-                  };
-                };
+                open-floating = true;
+                default-column-width.fixed = 1080;
+                default-window-height.fixed = 920;
               }
 
               {
@@ -212,63 +148,41 @@
                 right = 32;
               };
             };
+            hotkey-overlay.skip-at-startup = yes;
+            debug.honor-xdg-activation-with-invalid-serial = yes;
             binds = {
-              "Mod+Alt+M".spawn-sh = "${../waybar/scripts/spawn_term.sh} mpris";
-              "Mod+Alt+B".spawn-sh = "${../waybar/scripts/spawn_term.sh} custom-bluetooth";
-              "Mod+Alt+A".spawn-sh = "${../waybar/scripts/spawn_term.sh} wireplumber";
-              "Mod+Alt+N".spawn-sh = "${../waybar/scripts/spawn_term.sh} network";
-              "Mod+Alt+C".spawn-sh = "${../waybar/scripts/spawn_term.sh} cpu";
+              "Mod+Alt+A".spawn-sh = "noctalia msg panel-toggle control-center audio";
+              "Mod+Alt+B".spawn-sh = "noctalia msg panel-toggle control-center bluetooth";
+              "Mod+Alt+C".spawn-sh = "noctalia msg panel-toggle control-center calendar";
+              "Mod+Alt+M".spawn-sh = "noctalia msg panel-toggle control-center media";
+              "Mod+Alt+N".spawn-sh = "noctalia msg panel-toggle control-center network";
+              "Mod+Alt+S".spawn-sh = "noctalia msg panel-toggle control-center system";
+              "Mod+Alt+T".spawn-sh = "noctalia msg panel-toggle control-center notifications";
+              "Mod+Alt+W".spawn-sh = "noctalia msg panel-toggle control-center weather";
 
               "Mod+Return".spawn = "foot";
               "Mod+Alt+Return".spawn = "librewolf";
-              "Mod+D".spawn = "fuzzel";
+              "Mod+D".spawn-sh = "noctalia msg panel-toggle launcher";
+              "Mod+S".spawn-sh = "noctalia msg panel-toggle control-center";
+              "Mod+Comma".spawn-sh = "noctalia msg settings-toggle";
 
-              "Mod+Shift+C".spawn-sh = "makoctl dismiss";
-              "Mod+Ctrl+Shift+C".spawn-sh = "makoctl restore";
+              "Mod+Shift+C".spawn-sh = "noctalia msg notification-clear-active";
 
-              "Mod+P".spawn-sh = "cliphist list | fuzzel -d -p 'copy: ' | cliphist decode | wl-copy";
-              "Mod+Escape".spawn = "swaylock";
-
-              "Mod+Alt+L".spawn-sh = "${../waybar/scripts/powermenu.sh}";
+              "Mod+P".spawn-sh = "noctalia msg panel-toggle clipboard";
+              "Mod+Alt+L".spawn-sh = "noctalia msg panel-toggle session";
 
               "Mod+Shift+Slash".show-hotkey-overlay = yes;
 
-              "XF86MonBrightnessDown" = _: {
-                props.allow-when-locked = true;
-                content.spawn-sh = "brightnessctl set 5%-";
-              };
-              "XF86MonBrightnessUp" = _: {
-                props.allow-when-locked = true;
-                content.spawn-sh = "brightnessctl set 5%+";
-              };
-              "XF86AudioRaiseVolume" = _: {
-                props.allow-when-locked = true;
-                content.spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
-              };
-              "XF86AudioLowerVolume" = _: {
-                props.allow-when-locked = true;
-                content.spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
-              };
-              "XF86AudioMute" = _: {
-                props.allow-when-locked = true;
-                content.spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-              };
-              "XF86AudioMicMute" = _: {
-                props.allow-when-locked = true;
-                content.spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-              };
-              "XF86AudioPlay" = _: {
-                props.allow-when-locked = true;
-                content.spawn-sh = "playerctl play-pause";
-              };
-              "XF86AudioNext" = _: {
-                props.allow-when-locked = true;
-                content.spawn-sh = "playerctl next";
-              };
-              "XF86AudioPrev" = _: {
-                props.allow-when-locked = true;
-                content.spawn-sh = "playerctl previous";
-              };
+              "XF86MonBrightnessDown".spawn-sh = "noctalia msg brightness-down";
+              "XF86MonBrightnessUp".spawn-sh = "noctalia msg brightness-up";
+              "XF86AudioRaiseVolume".spawn-sh = "noctalia msg volume-up";
+              "XF86AudioLowerVolume".spawn-sh = "noctalia msg volume-down";
+              "XF86AudioMute".spawn-sh = "noctalia msg volume-mute";
+              "XF86AudioMicMute".spawn-sh = "noctalia msg mic-mute";
+              "XF86AudioPlay".spawn-sh = "noctalia msg media toggle";
+              "XF86AudioStop".spawn-sh = "noctalia msg media stop";
+              "XF86AudioNext".spawn-sh = "noctalia msg media next";
+              "XF86AudioPrev".spawn-sh = "noctalia msg media previous";
 
               "Mod+Shift+Q".close-window = yes;
 
@@ -373,8 +287,8 @@
               "Mod+BracketLeft".consume-or-expel-window-left = yes;
               "Mod+BracketRight".consume-or-expel-window-right = yes;
 
-              "Mod+Comma".consume-window-into-column = yes;
-              "Mod+Period".expel-window-from-column = yes;
+              # "Mod+Comma".consume-window-into-column = yes;
+              # "Mod+Period".expel-window-from-column = yes;
 
               "Mod+R".switch-preset-column-width = yes;
               "Mod+Shift+R".switch-preset-window-height = yes;
