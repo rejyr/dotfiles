@@ -32,7 +32,36 @@
           packages = with pkgs; [ ];
         };
 
-        home-manager.users.rejyr = self.homeModules.rejyrModule;
+        hjem.users.rejyr = {
+          user = "rejyr";
+          directory = "/home/rejyr";
+          files = {
+            # cargo
+            ".cargo/config.toml".text = ''
+              [target.x86_64-unknown-linux-gnu]
+              linker = "clang"
+              rustflags = ["-Clink-arg=--ld-path=wild"]
+            '';
+
+            # git
+            ".config/git/config".text = ''
+              [credential "https://gist.github.com"]
+              	helper = "${lib.getExe pkgs.gh} auth git-credential"
+
+              [credential "https://github.com"]
+              	helper = "${lib.getExe pkgs.gh} auth git-credential"
+
+              [user]
+              	name = Jerry Wang
+              	email = jerrylwang123@gmail.com
+              [init]
+              	defaultBranch = main
+            '';
+
+            # librewolf
+            ".librewolf/librewolf.overrides.cfg".source = ./userConfigs/librewolf.overrides.cfg;
+          };
+        };
       };
     };
 }

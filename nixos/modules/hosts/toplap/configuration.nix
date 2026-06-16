@@ -7,7 +7,7 @@
   flake.nixosConfigurations.toplap = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.toplapModule
-      self.nixosModules.myHomeManager
+      inputs.hjem.nixosModules.default
     ];
   };
 

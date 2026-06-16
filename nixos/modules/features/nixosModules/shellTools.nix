@@ -35,6 +35,8 @@
           fd
           fzf
           gcc
+          gh
+          git
           jq
           ripgrep
           rsync

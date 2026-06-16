@@ -23,6 +23,7 @@
         self.nixosModules.docker
         self.nixosModules.geoclue2
         self.nixosModules.keyboard
+        self.nixosModules.mpd
         self.nixosModules.networking
         self.nixosModules.nix
         self.nixosModules.printing
@@ -46,6 +47,7 @@
         myFeatures.keyboard.enable = lib.mkDefault true;
         myFeatures.keyboard.qmk.enable = lib.mkDefault true;
         myFeatures.keyboard.kanata.enable = lib.mkDefault true;
+        myFeatures.mpd.enable = lib.mkDefault true;
         myFeatures.networking.enable = lib.mkDefault true;
         myFeatures.nix.enable = lib.mkDefault true;
         myFeatures.printing.enable = lib.mkDefault true;

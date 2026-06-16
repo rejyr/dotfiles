@@ -91,11 +91,12 @@ local groups = {
   },
   {
     keys = '<leader>q',
-    desc = '+quit/session',
+    desc = '+quit/quickfix',
     mappings = {
       { '<leader>q!', '<cmd>:qa!<cr>', { desc = ':qa!' } },
       { '<leader>qq', '<cmd>qa<cr>', { desc = ':qa' } },
       { '<leader>qs', '<cmd>wqa<cr>', { desc = ':wqa' } },
+      { '<leader>qf', '<cmd>cclose<cr>', { desc = 'Close Quickfix List' } },
     },
   },
   {

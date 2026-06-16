@@ -7,7 +7,7 @@
   flake.nixosConfigurations.ibp = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.ibpModule
-      self.nixosModules.myHomeManager
+      inputs.hjem.nixosModules.default
     ];
   };
 
@@ -41,6 +41,14 @@
 
       myFeatures.userRejyr.enable = true;
       networking.hostName = "ibp";
+
+      environment.systemPackages = with pkgs; [
+        # TODO: nixos module?
+        arduino-ide
+        freecad
+        kicad
+        orca-slicer
+      ];
 
       system.stateVersion = "25.11";
     };

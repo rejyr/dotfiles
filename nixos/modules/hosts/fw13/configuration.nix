@@ -7,7 +7,7 @@
   flake.nixosConfigurations.fw13 = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.fw13Module
-      self.nixosModules.myHomeManager
+      inputs.hjem.nixosModules.default
     ];
   };
 
