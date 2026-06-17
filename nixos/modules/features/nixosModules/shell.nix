@@ -16,19 +16,24 @@
       selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
     in
     {
+      imports = [
+        self.nixosModules.nvim
+      ];
+
       options.myFeatures.shell = {
         enable = lib.mkEnableOption "Shell Tools";
       };
 
       config = lib.mkIf cfg.enable {
-        hjem.users.rejyr.files.".config/fastfetch/config.jsonc".source = ../userConfigs/fastfetch/config.jsonc;
+        myFeatures.nvim.enable = true;
+
+        hjem.users.rejyr.files.".config/fastfetch/config.jsonc".source =
+          ../userConfigs/fastfetch/config.jsonc;
         hjem.users.rejyr.files.".config/fish/config.fish".source = ../userConfigs/fish/config.fish;
         hjem.users.rejyr.files.".config/starship.toml".source = ../userConfigs/starship/starship.toml;
         hjem.users.rejyr.files.".config/zellij/config.kdl".source = ../userConfigs/zellij/config.kdl;
 
         environment.systemPackages = with pkgs; [
-          selfpkgs.neovim
-
           atuin
           fish
           starship

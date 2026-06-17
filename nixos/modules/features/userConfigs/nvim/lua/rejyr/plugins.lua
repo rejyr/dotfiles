@@ -1,24 +1,30 @@
-local minimisc = require 'mini.misc'
 local function later(f)
   ---@diagnostic disable-next-line: undefined-global
-  minimisc.safely('later', f)
+  require('mini.misc').safely('later', f)
 end
 
 vim.cmd 'packadd nvim.undotree'
-
--- update hooks
-vim.api.nvim_create_autocmd('PackChanged', {
-  callback = function(ev)
-    local name, kind = ev.data.spec.name, ev.data.kind
-    -- :TSUpdate for treesitter
-    if name == 'nvim-treesitter' and kind == 'update' then
-      if not ev.data.active then
-        vim.cmd.packadd 'nvim-treesitter'
-      end
-      vim.cmd 'TSUpdate'
-    end
-  end,
-})
+vim.pack.add {
+  { src = 'https://github.com/saghen/blink.cmp', version = 'v1' },
+  'https://github.com/stevearc/conform.nvim',
+  'https://github.com/sainnhe/everforest',
+  'https://github.com/ibhagwan/fzf-lua',
+  'https://github.com/nvim-mini/mini.nvim',
+  'https://github.com/neovim/nvim-lspconfig',
+  'https://github.com/hasansujon786/nvim-navbuddy',
+  'https://github.com/SmiteshP/nvim-navic',
+  'https://github.com/MunifTanjim/nui.nvim',
+  'https://github.com/stevearc/quicker.nvim',
+  'https://github.com/hiphish/rainbow-delimiters.nvim',
+  {
+    src = 'https://github.com/mrcjkb/rustaceanvim',
+    version = vim.version.range '^9',
+  },
+  'https://github.com/romus204/tree-sitter-manager.nvim',
+  'https://github.com/tpope/vim-fugitive',
+  'https://github.com/lervag/vimtex',
+  'https://github.com/gbprod/yanky.nvim',
+}
 
 -- colorscheme
 vim.g.everforest_background = 'medium'
@@ -64,6 +70,26 @@ vim.g.rainbow_delimiters = {
     'Green',
   },
 }
+
+-- treesitter
+later(function()
+  require('tree-sitter-manager').setup {
+    ensure_installed = {},
+    auto_install = true,
+    -- Use built-in Neovim treesitter parsers
+    noauto_install = {
+      'c',
+      'lua',
+      'markdown',
+      'markdown_inline',
+      'query',
+      'vim',
+      'vimdoc',
+    },
+    border = vim.g.border,
+    nerdfont = false,
+  }
+end)
 
 -- mini plugins
 require('mini.files').setup()
