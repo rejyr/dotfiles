@@ -40,12 +40,13 @@
           package = selfpkgs.niri;
         };
 
+        hjem.users.rejyr.files.".config/foot/foot.ini".source = ../userConfigs/foot/foot.ini;
         hjem.users.rejyr.files.".config/noctalia/noctalia-config.toml".source = ../userConfigs/noctalia/noctalia-config.toml;
 
         environment.systemPackages = with pkgs; [
-          selfpkgs.foot
           inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 
+          foot
           librewolf
           libnotify
           ungoogled-chromium
