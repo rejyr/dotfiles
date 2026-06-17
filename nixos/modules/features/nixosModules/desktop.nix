@@ -45,11 +45,11 @@
         environment.systemPackages = with pkgs; [
           selfpkgs.foot
           inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-          selfpkgs.zathura
 
           librewolf
           libnotify
           ungoogled-chromium
+          zathura
 
           imv
           mpv
