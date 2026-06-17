@@ -1,0 +1,62 @@
+// vim: cms=//\ %s
+include "animations.kdl"
+include "binds.kdl"
+include "input.kdl"
+include "layer-rules.kdl"
+include "layout.kdl"
+include "startup.kdl"
+include "window-rules.kdl"
+
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png"
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+overview {
+    zoom 0.35
+    workspace-shadow {
+        off
+    }
+}
+
+cursor {
+    xcursor-size 24
+}
+
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+
+// shadow for (fuzzel) launcher
+layer-rule {
+    match namespace="^launcher$"
+    shadow {
+        on
+    }
+}
+
+
+window-rule {
+    match app-id=r#"librewolf"#
+    opacity 1.0
+}
+
+window-rule {
+    match is-focused=true
+    opacity 0.95
+}
+
+// place wallpaper in overview too
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}

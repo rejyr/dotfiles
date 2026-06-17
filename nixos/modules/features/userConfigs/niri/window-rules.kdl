@@ -1,0 +1,29 @@
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    match app-id=r#"librewolf$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Floating Noctalia settings window.
+window-rule {
+  match app-id="dev.noctalia.Noctalia.Settings"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+
+// blur rules
+window-rule {
+    clip-to-geometry true
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
+// minimum floating window size
+window-rule {
+    match is-floating=true
+    min-width 100
+    min-height 100
+}

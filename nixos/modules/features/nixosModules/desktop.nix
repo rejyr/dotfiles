@@ -35,12 +35,10 @@
         myFeatures.photography.enable = lib.mkDefault true;
         myFeatures.polkit.enable = lib.mkDefault true;
 
-        programs.niri = {
-          enable = true;
-          package = selfpkgs.niri;
-        };
+        programs.niri.enable = true;
 
         hjem.users.rejyr.files.".config/foot/foot.ini".source = ../userConfigs/foot/foot.ini;
+        hjem.users.rejyr.files.".config/niri".source = ../userConfigs/niri;
         hjem.users.rejyr.files.".config/noctalia/noctalia-config.toml".source = ../userConfigs/noctalia/noctalia-config.toml;
 
         environment.systemPackages = with pkgs; [
@@ -50,6 +48,8 @@
           librewolf
           libnotify
           ungoogled-chromium
+          xdg-desktop-portal-gnome
+          xwayland-satellite
           zathura
 
           imv

@@ -1,3 +1,12 @@
+animations {
+    // off
+    // slowdown 3.0
+    exit-confirmation-open-close {
+        off
+    }
+
+    window-resize {
+        custom-shader r"
 // Example: cropped next texture if it's bigger than the current geometry, and
 // crossfade between previous and next texture otherwise.
 vec4 crossfade_or_crop_next(vec3 coords_curr_geo, vec3 size_curr_geo) {
@@ -46,4 +55,7 @@ vec4 crossfade_or_crop_next(vec3 coords_curr_geo, vec3 size_curr_geo) {
 vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
     // You can pick one of the example functions or write your own.
     return crossfade_or_crop_next(coords_curr_geo, size_curr_geo);
+}
+"
+    }
 }
