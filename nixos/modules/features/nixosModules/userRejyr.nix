@@ -35,6 +35,7 @@
         hjem.users.rejyr = {
           user = "rejyr";
           directory = "/home/rejyr";
+          clobberFiles = true;
           files = {
             # cargo
             ".cargo/config.toml".text = ''

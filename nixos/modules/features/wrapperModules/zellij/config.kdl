@@ -2,7 +2,7 @@ web_client {
     font "monospace"
 }
 
-default_shell "nu"
+default_shell "fish"
 
 theme "everforest-dark"
 simplified_ui true

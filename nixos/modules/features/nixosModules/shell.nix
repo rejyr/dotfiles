@@ -21,11 +21,18 @@
       };
 
       config = lib.mkIf cfg.enable {
+        hjem.users.rejyr.files.".config/fish/config.fish".source = ../userConfigs/fish/config.fish;
+        hjem.users.rejyr.files.".config/starship.toml".source = ../userConfigs/starship/starship.toml;
+
         environment.systemPackages = with pkgs; [
           selfpkgs.fastfetch
           selfpkgs.neovim
-          selfpkgs.nushell
           selfpkgs.zellij
+
+          atuin
+          fish
+          starship
+          zoxide
 
           bat
           bottom

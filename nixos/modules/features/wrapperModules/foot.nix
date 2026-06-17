@@ -16,7 +16,7 @@
           main = {
             term = "foot";
             font = "IosevkaNF:size=16, Noto Color Emoji:size=16";
-            shell = "nu";
+            shell = "fish";
             pad = "8x8";
           };
           key-bindings = {
