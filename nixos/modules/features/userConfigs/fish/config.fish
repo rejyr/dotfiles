@@ -22,8 +22,8 @@ if status is-interactive
     # abbrs
     abbr -a -- bltcl "bluetoothctl"
     abbr -a -- cl "clear"
-    abbr -a -- clf "clear fastfetch"
-    abbr -a -- clg "clear fish_greeting"
+    abbr -a -- clf "clear; fastfetch"
+    abbr -a -- clg "clear; fish_greeting"
     abbr -a -- l "eza -lg"
     abbr -a -- la "eza -lga"
     abbr -a -- ll "eza -lga"

@@ -21,11 +21,11 @@
       };
 
       config = lib.mkIf cfg.enable {
+        hjem.users.rejyr.files.".config/fastfetch/config.jsonc".source = ../userConfigs/fastfetch/config.jsonc;
         hjem.users.rejyr.files.".config/fish/config.fish".source = ../userConfigs/fish/config.fish;
         hjem.users.rejyr.files.".config/starship.toml".source = ../userConfigs/starship/starship.toml;
 
         environment.systemPackages = with pkgs; [
-          selfpkgs.fastfetch
           selfpkgs.neovim
           selfpkgs.zellij
 
@@ -39,6 +39,7 @@
           clang
           dust
           eza
+          fastfetch
           fd
           fzf
           gcc
