@@ -31,7 +31,7 @@
           description = "Music Player Daemon";
           serviceConfig = {
             Type = "notify";
-            ExecStart = "${lib.getExe pkgs.mpd} --no-daemon ${./userConfigs/mpd.conf}";
+            ExecStart = "${lib.getExe pkgs.mpd} --no-daemon ${../userConfigs/mpd/mpd.conf}";
           };
         };
 
@@ -50,7 +50,7 @@
           };
         };
 
-        hjem.users.rejyr.files.".config/rmpc".source = ./userConfigs/rmpc;
+        hjem.users.rejyr.files.".config/rmpc".source = ../userConfigs/rmpc;
 
         environment.systemPackages = with pkgs; [
           mpc

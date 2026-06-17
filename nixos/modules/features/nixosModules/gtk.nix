@@ -65,8 +65,8 @@
           };
         };
 
-        hjem.users.rejyr.files.".themes".source = ./userConfigs/.themes;
-        hjem.users.rejyr.files.".config/gtk-4.0".source = ./userConfigs/.themes/Everforest-BL-LB-Dark-Medium/gtk-4.0;
+        hjem.users.rejyr.files.".themes".source = ../userConfigs/.themes;
+        hjem.users.rejyr.files.".config/gtk-4.0".source = ../userConfigs/.themes/Everforest-BL-LB-Dark-Medium/gtk-4.0;
 
         environment.systemPackages = with pkgs; [
           gtk3

@@ -40,7 +40,7 @@
           package = selfpkgs.niri;
         };
 
-        hjem.users.rejyr.files.".config/noctalia/noctalia-config.toml".source = ./userConfigs/noctalia-config.toml;
+        hjem.users.rejyr.files.".config/noctalia/noctalia-config.toml".source = ../userConfigs/noctalia/noctalia-config.toml;
 
         environment.systemPackages = with pkgs; [
           selfpkgs.foot

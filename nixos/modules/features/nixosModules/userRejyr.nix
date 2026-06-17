@@ -59,7 +59,7 @@
             '';
 
             # librewolf
-            ".librewolf/librewolf.overrides.cfg".source = ./userConfigs/librewolf.overrides.cfg;
+            ".librewolf/librewolf.overrides.cfg".source = ../userConfigs/librewolf/librewolf.overrides.cfg;
           };
         };
       };
