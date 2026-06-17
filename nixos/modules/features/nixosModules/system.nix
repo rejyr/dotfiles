@@ -28,7 +28,7 @@
         self.nixosModules.nix
         self.nixosModules.printing
         self.nixosModules.powerManagement
-        self.nixosModules.shellTools
+        self.nixosModules.shell
         self.nixosModules.texlive
         self.nixosModules.tzLocale
       ];
@@ -52,7 +52,7 @@
         myFeatures.nix.enable = lib.mkDefault true;
         myFeatures.printing.enable = lib.mkDefault true;
         myFeatures.powerManagement.enable = lib.mkDefault true;
-        myFeatures.shellTools.enable = lib.mkDefault true;
+        myFeatures.shell.enable = lib.mkDefault true;
         myFeatures.texlive.enable = lib.mkDefault true;
         myFeatures.tzLocale.enable = lib.mkDefault true;
 

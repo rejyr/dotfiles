@@ -4,7 +4,7 @@
   ...
 }:
 {
-  flake.nixosModules.shellTools =
+  flake.nixosModules.shell =
     {
       config,
       pkgs,
@@ -12,11 +12,11 @@
       ...
     }:
     let
-      cfg = config.myFeatures.shellTools;
+      cfg = config.myFeatures.shell;
       selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
     in
     {
-      options.myFeatures.shellTools = {
+      options.myFeatures.shell = {
         enable = lib.mkEnableOption "Shell Tools";
       };
 
