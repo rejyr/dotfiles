@@ -19,6 +19,9 @@ if status is-interactive
     set -Ux EDITOR nvim
     set -Ux MANPAGER "nvim +Man!"
 
+    # user paths
+    fish_add_path -g ~/.cargo/bin
+
     # abbrs
     abbr -a -- bltcl "bluetoothctl"
     abbr -a -- cl "clear"
