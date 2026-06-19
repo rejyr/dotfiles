@@ -16,8 +16,8 @@ end = [
     "volume",
     "brightness",
     "cpu",
-    "battery",
     "ram",
+    "battery",
     "power_profile",
     "session"
 ]
