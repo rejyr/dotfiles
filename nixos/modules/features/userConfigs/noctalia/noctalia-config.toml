@@ -25,7 +25,7 @@ margin_edge = 0
 margin_ends = 0
 radius = 0
 scale = 1.2000000104308128
-start = [ "launcher", "clock", "weather", "media", "audio_visualizer" ]
+start = [ "launcher", "wallpaper", "clock", "weather", "media", "audio_visualizer" ]
 thickness = 40
 widget_spacing = 12
 
@@ -149,32 +149,37 @@ niri_overview_type_to_launch_enabled = true
     directory = "/home/rejyr/Pictures/Screenshots"
 
 [theme]
-builtin = "Ayu"
+builtin = "Gruvbox"
 community_palette = "Everforest"
+mode = "dark"
 source = "community"
-wallpaper_scheme = "m3-monochrome"
+wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "cava", "foot", "gtk3", "gtk4", "kcolorscheme", "niri", "qt", "starship" ]
-    community_ids = [ "neovim", "steam", "yazi", "zathura" ]
+    builtin_ids = [ "cava", "foot", "gtk3", "gtk4", "niri", "qt", "starship" ]
+    community_ids = [ "pywalfox", "neovim", "papirus-icons", "steam", "yazi", "zathura" ]
     enable_builtin_templates = false
     enable_community_templates = false
 
 [wallpaper]
-directory = "/home/rejyr/dotfiles/wallpapers"
-transition = [ "wipe" ]
+directory = "/home/rejyr/Wallpapers/flattened"
+transition = [ "disc", "fade", "honeycomb", "stripes", "wipe", "zoom" ]
+transition_on_startup = true
+
+    [wallpaper.automation]
+    enabled = true
 
     [wallpaper.default]
-    path = "/home/rejyr/dotfiles/wallpapers/wallpaper.jpg"
+    path = "/home/rejyr/Wallpapers/flattened/flowers.png"
 
     [wallpaper.last]
-    path = "/home/rejyr/dotfiles/wallpapers/wallpaper.jpg"
+    path = "/home/rejyr/Wallpapers/flattened/flowers.png"
 
     [wallpaper.monitors.DP-2]
-    path = "/home/rejyr/dotfiles/wallpapers/wallpaper.jpg"
+    path = "/home/rejyr/Wallpapers/flattened/flowers.png"
 
     [wallpaper.monitors.HDMI-A-1]
-    path = "/home/rejyr/dotfiles/wallpapers/wallpaper.jpg"
+    path = "/home/rejyr/Wallpapers/flattened/flowers.png"
 
     [[wallpaper.favorite]]
     community_palette = "Everforest"
