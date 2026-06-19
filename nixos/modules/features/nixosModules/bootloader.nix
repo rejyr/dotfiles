@@ -29,7 +29,7 @@
         };
         style.wallpapers = lib.mkOption {
           description = "boot.loader.limine.style.wallpapers";
-          default = [ ../../../../wallpapers/shenandoah.png ];
+          default = [ ];
           type = lib.types.listOf lib.types.path;
         };
       };
