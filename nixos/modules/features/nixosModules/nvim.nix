@@ -45,7 +45,9 @@
           taplo
           texlab
           typescript-language-server
-          vscode-langservers-extracted
+          vscode-css-languageserver
+          vscode-json-languageserver
+          # vscode-langservers-extracted
 
           eslint_d
           selene
