@@ -32,7 +32,7 @@
 
       config = lib.mkIf cfg.enable {
         myFeatures.clipboard.enable = lib.mkDefault true;
-        myFeatures.gaming.enable = lib.mkDefault true;
+        myFeatures.gaming.enable = lib.mkDefault false;
         myFeatures.gtk.enable = lib.mkDefault true;
         myFeatures.fonts.enable = lib.mkDefault true;
         myFeatures.photography.enable = lib.mkDefault true;
