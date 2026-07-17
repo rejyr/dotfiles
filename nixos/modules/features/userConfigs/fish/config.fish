@@ -19,6 +19,7 @@ set -Ux EDITOR nvim
 set -Ux MANPAGER "nvim +Man!"
 
 # user paths
+fish_add_path -g ~/.local/bin
 fish_add_path -g ~/.cargo/bin
 
 if status is-interactive
