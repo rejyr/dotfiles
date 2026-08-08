@@ -2,6 +2,8 @@
     process-unmapped-keys yes
     log-layer-changes yes
     movemouse-inherit-accel-state yes
+    concurrent-tap-hold yes
+    chords-v2-min-idle 50
 )
 
 (defsrc
@@ -15,62 +17,71 @@
 
 (deflayer qwerty
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _    @hlm
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  @ext _    _    _    _    _    _    _    _    _    _    _    _         _
-  _    _    _    _    _    _    _    _    _    _    _    @sym           _
-  _    _    _              _              _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _         _
+  _    _    _    _    _    _    _    _    _    _    _    _              _
+  _    _    _              _              _    _    @rlm
 )
 
 ;; https://getreuer.info/posts/keyboards/alt-layouts/index.html
 ;; https://github.com/Ikcelaks/keyboard_layouts/blob/main/magic_sturdy/magic_sturdy.md
-;; https://dreymar.colemak.org/ergo-mods.html#angle-wide
-;; angle+wide mod, b-z swap
+;; https://github.com/jan-mate/keyboard_layouts
+;; higher home row
 (deflayer magic-sturdy
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _    @hlq
-  _    v    m    l    c    p    [    z    @mgc u    o    q    '    _    _
-  @ext s    t    r    d    y    ]    f    n    e    a    i    _         _
-  _    k    j    g    w    x    ;    b    h    ,    .    @sym           _
-  _    _    _              _              @mrp _    _
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   v    m    l    c    p    XX   XX   z    @mgc u    o    q    XX   XX
+  XX   @h_s @h_t @h_r @h_d y    XX   XX   f    @h_n @h_e @h_a @h_i XX   XX
+  XX   x    k    j    g    w    XX   XX   b    h    @m,; @m.: '         XX
+  XX   XX   XX   @rt2 @rt1 XX   XX   @lt1 @lt2 XX   XX   XX             XX
+  XX   XX   XX             XX             XX   XX   @rlq
 )
 
-;; https://dreymar.colemak.org/layers-extend.html
-;; hjkl arrows
-(deflayer extend
-  _    pp   prev next _    mute vold volu _    brup brdn _    _    _
-  @cpw f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    @hlm
-  _    C-f  bck  fwd  esc  ins  XX   pgup home end  del  @cpw _    _    _
-  _    @osm @osa @osc @oss ralt XX   pgdn left down up   rght prnt      _
-  @mse C-z  C-x  C-c  C-v  lmet XX   tab  bspc ret  @rpa _              _
-  _    _    _              _              @cpw _    _
+(deflayer nav
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    pgup _    _    _    _    _    _
+  _    @osm @osa @oss @osc _    _    _    pgdn @n_l @n_d @n_u @n_r _    _
+  _    _    _    _    _    _    _    _    tab  @nbs ret  @ndl ins       _
+  _    _    _    _    _    _    _    _    @def _    _    _              _
+  _    _    _              _              _    _    _
 )
 
-;; https://getreuer.info/posts/keyboards/symbol-layer/index.html
-;; getreuer v2
-(deflayer symbol
+(deflayer fn
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    `    S-,  S-.  -    S-\  XX   S-6  S-[  S-]  S-4  \    '    _    _
-  @ext S-1  S-8  /    =    S-7  XX   S-3  S-9  S-0  ;    S--  _         _
-  _    S-`  S-=  [    ]    S-5  XX   S-2  S-;  S-/  S-'  _              _
-  _    _    _              _              rpt  _    _
+  _    f12  f7   f8   f9   _    _    _    brup prnt _    _    _    _    _
+  _    f11  f4   f5   f6   _    _    _    brdn @f_l @f_d @f_u @f_r _    _
+  _    f10  f1   f2   f3   _    _    _    _    _    _    _    _         _
+  _    _    _    _    _    _    _    pp   mute _    _    _              _
+  _    _    _              _              _    _    _
+)
+
+(deflayer num
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    7    8    9    _    _    _    _    _    _    _    _    _    _
+  _    0    4    5    6    _    _    _    _    @osc @oss @osa @osm _    _
+  _    _    1    2    3    _    _    _    _    _    @n,  @n.  @n'       _
+  _    _    _    @nre @nsp _    _    _    @def _    _    _              _
+  _    _    _              _              _    _    _
 )
 
 (deflayer mouse
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    @osm @osa @osc @oss _    _    _    @mml @mmd @mmu @mmr _         _
-  _    _    mmid mrgt mlft _    _    @mwl @mwd @mwu @mwr _              _
+  _    _    @def _    _    _    _    _    _    _    _    _    _    _    _
+  _    @osm @osa @oss @osc _    _    _    mmid @mml @mmd @mmu @mmr _    _
+  _    _    _    _    _    _    _    _    _    @mwl @mwd @mwu @mwr      _
+  _    _    _    _    _    _    _    mlft mrgt _    _    _              _
   _    _    _              _              _    _    _
 )
 
 (defvar
-    tap-time 200
-    hold-time 250
+    quick-tap-ms 175
+    tap-time 175
+    hold-time 200
+    thumb-hold-time 200
+    tap-dance-timeout 200
     caps-word-timeout 2000
     one-shot-timeout 2000
+    macro-timeout 200
     ;; https://github.com/qmk/qmk_firmware/blob/master/docs/features/mouse_keys.md
     mw-initial-v 32
     mw-maximum-v 1200
@@ -82,18 +93,111 @@
     mm-max 80
 )
 
+(defhands
+    (left  1 2 3 4 5 6 q w e r t a s d f g z x c v b)
+    (right 7 8 9 0 - = ret y u i o p h j k l ; n m , . /)
+)
+
+(defvirtualkeys
+    oss (one-shot $one-shot-timeout lsft)
+    def (layer-switch magic-sturdy)
+)
+
+;; make home row mod
+(deftemplate hrm (name tap hold)
+    $name (tap-hold-opposite-hand-release 280 $tap $hold (timeout hold) (tap-repress-timeout $quick-tap-ms) (require-prior-idle 150))
+)
+
+;; make mod tap
+(deftemplate mt (name tap hold)
+    $name (tap-hold-tap-keys 220 220 $tap $hold ())
+)
+
+;; make combo morph
+(deftemplate combo-morph (name norm modded)
+    $name (switch
+        (lsft (layer nav)) $modded break
+        () $norm break
+    )
+)
+
 (defalias
     rpa rpt-any
-    cpw (caps-word $caps-word-timeout)
-    ext (layer-while-held extend)
-    sym (layer-while-held symbol)
-    mse (layer-while-held mouse)
+
+    ;; morphs
+    m,; (switch
+        ((and lsft (or lctl rctl))) (unmod (lsft lctl rctl) lsft ,) break
+        (lsft) (unshift ;) break
+        () , break
+    )
+    m.: (switch
+        ((and lsft (or lctl rctl))) (unmod (lsft lctl rctl) lsft .) break
+        (lsft) S-; break
+        () . break
+    )
+
+    ;; combo morphs
+    (t! combo-morph m_lpar_lt   S-9 S-,)
+    (t! combo-morph m_rpar_gt   S-0 S-.)
+    (t! combo-morph m_lbkt_lbrc [   S-[)
+    (t! combo-morph m_rbkt_rbrc ]   S-])
+    (t! combo-morph m_q_excl    S-/ S-1)
+
+    ;; layer switching
+    def (layer-switch magic-sturdy)
+    fn  (layer-while-held fn)
+    nav (layer-while-held nav)
+
+    ;; TODO: implement smart layers
+    nsp (macro spc (on-press tap-vkey def))
+    nre (macro ret (on-press tap-vkey def))
+    n,  (macro ,   (on-press tap-vkey def))
+    n.  (macro .   (on-press tap-vkey def))
+    n'  (macro '   (on-press tap-vkey def))
+    (t! mt smart-mouse (switch
+        ((base-layer mouse)) @def break
+        () (layer-switch mouse) break
+    ) (layer-while-held mouse))
+    (t! mt smart-num (layer-switch num) (layer-while-held num))
+
+    ;; rctl layer-switch magic-sturdy
+    rlm (tap-hold-release $quick-tap-ms $hold-time rctl (layer-switch magic-sturdy))
+    ;; home layer-switch qwerty
+    rlq (tap-hold-release $quick-tap-ms $hold-time rctl (layer-switch qwerty))
+
+    ;; home row mods
+    (t! hrm h_s s lmet)
+    (t! hrm h_t t lalt)
+    (t! hrm h_r r lsft)
+    (t! hrm h_d d lctl)
+    (t! hrm h_n n lctl)
+    (t! hrm h_e e lsft)
+    (t! hrm h_a a lalt)
+    (t! hrm h_i i lmet)
+
     ;; one shot mods
     osm (one-shot $one-shot-timeout lmet)
     osa (one-shot $one-shot-timeout lalt)
     osc (one-shot $one-shot-timeout lctl)
     oss (one-shot $one-shot-timeout lsft)
+
+    ;; nav tap-hold
+    (t! mt n_u up   C-home)
+    (t! mt n_d down C-end)
+    (t! mt n_l left (unmod (lctl rctl) home))
+    (t! mt n_r rght (unmod (lctl rctl) end))
+    (t! mt nbs bspc C-bspc)
+    (t! mt ndl del  C-del )
+
+    ;; fn hrm
+    (t! hrm f_l prev lctl)
+    (t! hrm f_d vold lsft)
+    (t! hrm f_u volu lalt)
+    (t! hrm f_r next lmet)
+
     ;; mouse keys
+    msl (movemouse-speed 25)
+    mfs (movemouse-speed 200)
     mwu (mwheel-accel-up   $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
     mwd (mwheel-accel-down $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
     mwl (mwheel-accel-left  $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
@@ -102,18 +206,15 @@
     mmd (movemouse-accel-down $mm-interval $mm-acceleration-time $mm-min $mm-max)
     mml (movemouse-accel-left $mm-interval $mm-acceleration-time $mm-min $mm-max)
     mmr (movemouse-accel-right $mm-interval $mm-acceleration-time $mm-min $mm-max)
-    ;; home layer-switch magic-sturdy
-    hlm (tap-hold-press $tap-time $hold-time home (layer-switch magic-sturdy))
-    ;; home layer-switch qwerty
-    hlq (tap-hold-press $tap-time $hold-time home (layer-switch qwerty))
+
     ;; magic-sturdy magic key
     mgc (switch
         ((key-history a 1)) o break
         ((key-history b 1)) (macro e f o r e) break
-        ((key-history c 1)) y break
-        ((key-history d 1)) y break
+        ((key-history c 1)) k break
+        ((key-history d 1)) g break
         ((key-history e 1)) u break
-        ((key-history f 1)) XX break
+        ((key-history f 1)) n  break
         ((key-history g 1)) y break
         ((key-history h 1)) XX break
         ((key-history i 1)) (macro o n) break
@@ -130,7 +231,7 @@
         ((key-history t 1)) (macro m e n t) break
         ((key-history u 1)) e break
         ((key-history v 1)) (macro e r) break
-        ((key-history w 1)) (macro h i c h) break
+        ((key-history w 1)) y break
         ((key-history x 1)) (macro e s ) break
         ((key-history y 1)) p break
         ((key-history z 1)) XX break
@@ -138,15 +239,110 @@
         ((key-history , 1)) (macro spc b u t) break
         ((key-history . 1)) (macro . /) break
     )
+
+    ;; Tap: repeat after alpha, else sticky-shift |
+    ;; shift-tap/double-tap: caps-word | Hold: shift.
     ;; magic-sturdy repeat key
-    mrp (switch
+    magic-shift-repeat (switch
         ((key-history a 1)) (macro n d) break
         ((key-history i 1)) (macro n g) break
-        ((key-history n 1)) (macro f) break
         ((key-history y 1)) (macro o u) break
-        ((key-history spc 1)) (macro f o r) break
+        ;; ((key-history b 1)) (macro e c a u s e) break
+        ;; ((key-history w 1)) (macro o u l d) break
+        ;; ((key-history spc 1)) (macro f o r) break
         ((key-history , 1)) (macro spc a n d) break
-        ((key-history . 1)) (macro o r g) break
-        () rpt break
+        ((key-history a 1)
+         (key-history b 1)
+         (key-history c 1)
+         (key-history d 1)
+         (key-history e 1)
+         (key-history f 1)
+         (key-history g 1)
+         (key-history h 1)
+         (key-history i 1)
+         (key-history j 1)
+         (key-history k 1)
+         (key-history l 1)
+         (key-history m 1)
+         (key-history n 1)
+         (key-history o 1)
+         (key-history p 1)
+         (key-history q 1)
+         (key-history r 1)
+         (key-history s 1)
+         (key-history t 1)
+         (key-history u 1)
+         (key-history v 1)
+         (key-history w 1)
+         (key-history x 1)
+         (key-history y 1)
+         (key-history z 1)) rpt break
+        () @oss break
     )
+    cwc (caps-word-custom
+      $caps-word-timeout
+      (a b c d e f g h i j k l m n o p q r s t u v w x y z -)
+      (0 1 2 3 4 5 6 7 8 9 kp0 kp1 kp2 kp3 kp4 kp5 kp6 kp7 kp8 kp9 bspc del up down left rght lsft)
+    )
+    magic-shift-tap (fork @magic-shift-repeat @cwc (lsft))
+    msf (tap-hold-release $quick-tap-ms $thumb-hold-time @magic-shift-tap lsft)
+
+    ;; thumb keys
+    fn_msl (switch
+        ((layer mouse)) @msl break
+        () @fn break
+    )
+    nav_mfs (switch
+        ((layer mouse)) @mfs break
+        () @nav break
+    )
+    rt2 (tap-hold-release $quick-tap-ms $thumb-hold-time ret @fn_msl)
+    m_spc (fork spc (macro (unshift .) spc (on-press tap-vkey oss)) (lsft))
+    rt1 (tap-hold-release $quick-tap-ms $thumb-hold-time @m_spc @nav_mfs)
+    lt1 @msf
+    lt2 @smart-num
+)
+
+;; make combos
+(deftemplate hcombo (keys action)
+    $keys $action 18 all-released (qwerty)
+)
+(deftemplate vcombo (keys action)
+    $keys $action 50 all-released (qwerty)
+)
+
+(defchordsv2
+    (t! hcombo (2 3) esc)
+    (t! hcombo (3 4) @smart-mouse)
+    (t! hcombo (w e) tab)
+    (t! hcombo (e r) XX)
+    (t! hcombo (s d) C-c)
+    (t! hcombo (d f) C-v)
+    (t! hcombo (s f) C-x)
+
+    (t! vcombo (2 w) S-2)
+    (t! vcombo (3 e) S-3)
+    (t! vcombo (4 r) S-4)
+    (t! vcombo (5 t) S-5)
+    (t! vcombo (w s) `)
+    (t! vcombo (e d) \)
+    (t! vcombo (r f) =)
+    (t! vcombo (t g) S-`)
+
+    (t! hcombo (9 0) bspc)
+    (t! hcombo (0 -) del)
+    (t! hcombo (o p) @m_lpar_lt)
+    (t! hcombo (p [) @m_rpar_gt)
+    (t! hcombo (l ;) @m_lbkt_lbrc)
+    (t! hcombo (; ') @m_rbkt_rbrc)
+    (t! hcombo (' ret) @m_q_excl)
+
+    (t! vcombo (8 i) S-6)
+    (t! vcombo (9 o) S-=)
+    (t! vcombo (0 p) S-8)
+    (t! vcombo (- [) S-7)
+    (t! vcombo (i k) S--)
+    (t! vcombo (o l) -)
+    (t! vcombo (p ;) /)
+    (t! vcombo ([ ') S-\)
 )
