@@ -33,7 +33,7 @@
   XX   v    m    l    c    p    XX   XX   z    @mgc u    o    q    XX   XX
   XX   @h_s @h_t @h_r @h_d y    XX   XX   f    @h_n @h_e @h_a @h_i XX   XX
   XX   x    k    j    g    w    XX   XX   b    h    @m,; @m.: '         XX
-  XX   XX   XX   @rt2 @rt1 XX   XX   @lt1 @lt2 XX   XX   XX             XX
+  XX   XX   XX   XX   @rt2 @rt1 XX   @lt1 @lt2 XX   XX   XX             XX
   XX   XX   XX             XX             XX   XX   @rlq
 )
 
@@ -60,7 +60,7 @@
   _    _    7    8    9    _    _    _    _    _    _    _    _    _    _
   _    0    4    5    6    _    _    _    _    @osc @oss @osa @osm _    _
   _    _    1    2    3    _    _    _    _    _    @n,  @n.  @n'       _
-  _    _    _    @nre @nsp _    _    _    @def _    _    _              _
+  _    _    _    _    @nre @nsp _    _    @def _    _    _              _
   _    _    _              _              _    _    _
 )
 
@@ -69,7 +69,7 @@
   _    _    @def _    _    _    _    _    _    _    _    _    _    _    _
   _    @osm @osa @oss @osc _    _    _    mmid @mml @mmd @mmu @mmr _    _
   _    _    _    _    _    _    _    _    _    @mwl @mwd @mwu @mwr      _
-  _    _    _    _    _    _    _    mlft mrgt _    _    _              _
+  _    _    _    _    @msl @mfs _    mlft mrgt _    _    _              _
   _    _    _              _              _    _    _
 )
 
