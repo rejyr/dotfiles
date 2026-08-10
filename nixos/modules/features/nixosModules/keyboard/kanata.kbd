@@ -106,7 +106,9 @@
 ;; make home row mod
 (deftemplate hrm (name tap hold)
     (defalias
-        $name (tap-hold-opposite-hand-release 280 $tap $hold (timeout hold) (tap-repress-timeout $quick-tap-ms) (require-prior-idle 150))
+        $name (tap-hold-opposite-hand-release 280 $tap $hold
+        (timeout hold) (unknown-hand hold)
+        (tap-repress-timeout $quick-tap-ms) (require-prior-idle 150))
     )
 )
 ;; home row mods
@@ -142,8 +144,6 @@
 
 ;; misc
 (defalias
-    rpa rpt-any
-
     ;; one shot mods
     osm (one-shot $one-shot-timeout lmet)
     osa (one-shot $one-shot-timeout lalt)
@@ -306,6 +306,16 @@
     lt2 @smart-num
 )
 
+;; defines a vkey named v-$key, example v-bspc
+;; and an alias @v-bspc that press and and releases the v-key
+;; within on-press and on-release respectively.
+;; use virtual keys for tap-hold timings
+(deftemplate v- (key)
+  (defvirtualkeys (concat v- $key) $key)
+  (defalias (concat v- $key)
+    (multi (on-press press-vkey (concat v- $key)) (on-release release-vkey (concat v- $key))))
+)
+
 ;; make combo morph
 (deftemplate combo-morph (name norm modded)
     (defalias
@@ -316,11 +326,21 @@
     )
 )
 ;; combo morphs
-(t! combo-morph m_lpar_lt   S-9 S-,)
-(t! combo-morph m_rpar_gt   S-0 S-.)
-(t! combo-morph m_lbkt_lbrc [   S-[)
-(t! combo-morph m_rbkt_rbrc ]   S-])
-(t! combo-morph m_q_excl    S-/ S-1)
+(t! v- S-9)
+(t! v- S-,)
+(t! v- S-0)
+(t! v- S-.)
+(t! v- [  )
+(t! v- ]  )
+(t! v- S-[)
+(t! v- S-])
+(t! v- S-/)
+(t! v- S-1)
+(t! combo-morph m_lpar_lt   @v-S-9 @v-S-,)
+(t! combo-morph m_rpar_gt   @v-S-0 @v-S-.)
+(t! combo-morph m_lbkt_lbrc @v-[   @v-S-[)
+(t! combo-morph m_rbkt_rbrc @v-]   @v-S-])
+(t! combo-morph m_q_excl    @v-S-/ @v-S-1)
 
 ;; make combos
 (deftemplate hcombo (keys action)
@@ -330,38 +350,58 @@
     $keys $action 50 all-released (qwerty)
 )
 
+(t! v- esc)
+(t! v- tab)
+(t! v- bspc)
+(t! v- del)
+(t! v- S-2)
+(t! v- S-3)
+(t! v- S-4)
+(t! v- S-5)
+(t! v- `  )
+(t! v- \  )
+(t! v- =  )
+(t! v- S-`)
+(t! v- S-6)
+(t! v- S-=)
+(t! v- S-8)
+(t! v- S-7)
+(t! v- S--)
+(t! v- -  )
+(t! v- /  )
+(t! v- S-\)
 (defchordsv2
-    (t! hcombo (2 3) esc)
+    (t! hcombo (2 3) @v-esc)
     (t! hcombo (3 4) @smart-mouse)
-    (t! hcombo (w e) tab)
+    (t! hcombo (w e) @v-tab)
     (t! hcombo (e r) XX)
     (t! hcombo (s d) C-c)
     (t! hcombo (d f) C-v)
     (t! hcombo (s f) C-x)
 
-    (t! vcombo (2 w) S-2)
-    (t! vcombo (3 e) S-3)
-    (t! vcombo (4 r) S-4)
-    (t! vcombo (5 t) S-5)
-    (t! vcombo (w s) `)
-    (t! vcombo (e d) \)
-    (t! vcombo (r f) =)
-    (t! vcombo (t g) S-`)
+    (t! vcombo (2 w) @v-S-2)
+    (t! vcombo (3 e) @v-S-3)
+    (t! vcombo (4 r) @v-S-4)
+    (t! vcombo (5 t) @v-S-5)
+    (t! vcombo (w s) @v-`  )
+    (t! vcombo (e d) @v-\  )
+    (t! vcombo (r f) @v-=  )
+    (t! vcombo (t g) @v-S-`)
 
-    (t! hcombo (9 0) bspc)
-    (t! hcombo (0 -) del)
+    (t! hcombo (9 0) @v-bspc)
+    (t! hcombo (0 -) @v-del)
     (t! hcombo (o p) @m_lpar_lt)
     (t! hcombo (p [) @m_rpar_gt)
     (t! hcombo (l ;) @m_lbkt_lbrc)
     (t! hcombo (; ') @m_rbkt_rbrc)
     (t! hcombo (' ret) @m_q_excl)
 
-    (t! vcombo (8 i) S-6)
-    (t! vcombo (9 o) S-=)
-    (t! vcombo (0 p) S-8)
-    (t! vcombo (- [) S-7)
-    (t! vcombo (i k) S--)
-    (t! vcombo (o l) -)
-    (t! vcombo (p ;) /)
-    (t! vcombo ([ ') S-\)
+    (t! vcombo (8 i) @v-S-6)
+    (t! vcombo (9 o) @v-S-=)
+    (t! vcombo (0 p) @v-S-8)
+    (t! vcombo (- [) @v-S-7)
+    (t! vcombo (i k) @v-S--)
+    (t! vcombo (o l) @v--  )
+    (t! vcombo (p ;) @v-/  )
+    (t! vcombo ([ ') @v-S-\)
 )
