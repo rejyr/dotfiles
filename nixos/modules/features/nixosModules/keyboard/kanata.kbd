@@ -105,26 +105,54 @@
 
 ;; make home row mod
 (deftemplate hrm (name tap hold)
-    $name (tap-hold-opposite-hand-release 280 $tap $hold (timeout hold) (tap-repress-timeout $quick-tap-ms) (require-prior-idle 150))
+    (defalias
+        $name (tap-hold-opposite-hand-release 280 $tap $hold (timeout hold) (tap-repress-timeout $quick-tap-ms) (require-prior-idle 150))
+    )
 )
+;; home row mods
+(t! hrm h_s s lmet)
+(t! hrm h_t t lalt)
+(t! hrm h_r r lsft)
+(t! hrm h_d d lctl)
+(t! hrm h_n n lctl)
+(t! hrm h_e e lsft)
+(t! hrm h_a a lalt)
+(t! hrm h_i i lmet)
+;; fn hrm
+(t! hrm f_l prev lctl)
+(t! hrm f_d vold lsft)
+(t! hrm f_u volu lalt)
+(t! hrm f_r next lmet)
+
 
 ;; make mod tap
 (deftemplate mt (name tap hold)
-    $name (tap-hold-tap-keys 220 220 $tap $hold ())
-)
-
-;; make combo morph
-(deftemplate combo-morph (name norm modded)
-    $name (switch
-        (lsft (layer nav)) $modded break
-        () $norm break
+    (defalias
+        $name (tap-hold-tap-keys 220 220 $tap $hold ())
     )
 )
+;; nav tap-hold
+(t! mt n_u up   C-home)
+(t! mt n_d down C-end)
+(t! mt n_l left (unmod (lctl rctl) home))
+(t! mt n_r rght (unmod (lctl rctl) end))
+(t! mt nbs bspc C-bspc)
+(t! mt ndl del  C-del )
 
+
+;; misc
 (defalias
     rpa rpt-any
 
-    ;; morphs
+    ;; one shot mods
+    osm (one-shot $one-shot-timeout lmet)
+    osa (one-shot $one-shot-timeout lalt)
+    osc (one-shot $one-shot-timeout lctl)
+    oss (one-shot $one-shot-timeout lsft)
+)
+
+;; morphs
+(defalias
     m,; (switch
         ((and lsft (or lctl rctl))) (unmod (lsft lctl rctl) lsft ,) break
         (lsft) (unshift ;) break
@@ -135,67 +163,36 @@
         (lsft) S-; break
         () . break
     )
+)
 
-    ;; combo morphs
-    (t! combo-morph m_lpar_lt   S-9 S-,)
-    (t! combo-morph m_rpar_gt   S-0 S-.)
-    (t! combo-morph m_lbkt_lbrc [   S-[)
-    (t! combo-morph m_rbkt_rbrc ]   S-])
-    (t! combo-morph m_q_excl    S-/ S-1)
-
-    ;; layer switching
+;; layer switching
+(defalias
     def (layer-switch magic-sturdy)
     fn  (layer-while-held fn)
     nav (layer-while-held nav)
 
-    ;; TODO: implement smart layers
+    ;; rctl layer-switch magic-sturdy
+    rlm (tap-hold-release $quick-tap-ms $hold-time rctl (layer-switch magic-sturdy))
+    ;; rctl layer-switch qwerty
+    rlq (tap-hold-release $quick-tap-ms $hold-time rctl (layer-switch qwerty))
+)
+
+;; TODO: implement smart layers
+(defalias
     nsp (macro spc (on-press tap-vkey def))
     nre (macro ret (on-press tap-vkey def))
     n,  (macro ,   (on-press tap-vkey def))
     n.  (macro .   (on-press tap-vkey def))
     n'  (macro '   (on-press tap-vkey def))
-    (t! mt smart-mouse (switch
-        ((base-layer mouse)) @def break
-        () (layer-switch mouse) break
-    ) (layer-while-held mouse))
-    (t! mt smart-num (layer-switch num) (layer-while-held num))
+)
+(t! mt smart-mouse (switch
+    ((base-layer mouse)) @def break
+    () (layer-switch mouse) break
+) (layer-while-held mouse))
+(t! mt smart-num (layer-switch num) (layer-while-held num))
 
-    ;; rctl layer-switch magic-sturdy
-    rlm (tap-hold-release $quick-tap-ms $hold-time rctl (layer-switch magic-sturdy))
-    ;; home layer-switch qwerty
-    rlq (tap-hold-release $quick-tap-ms $hold-time rctl (layer-switch qwerty))
-
-    ;; home row mods
-    (t! hrm h_s s lmet)
-    (t! hrm h_t t lalt)
-    (t! hrm h_r r lsft)
-    (t! hrm h_d d lctl)
-    (t! hrm h_n n lctl)
-    (t! hrm h_e e lsft)
-    (t! hrm h_a a lalt)
-    (t! hrm h_i i lmet)
-
-    ;; one shot mods
-    osm (one-shot $one-shot-timeout lmet)
-    osa (one-shot $one-shot-timeout lalt)
-    osc (one-shot $one-shot-timeout lctl)
-    oss (one-shot $one-shot-timeout lsft)
-
-    ;; nav tap-hold
-    (t! mt n_u up   C-home)
-    (t! mt n_d down C-end)
-    (t! mt n_l left (unmod (lctl rctl) home))
-    (t! mt n_r rght (unmod (lctl rctl) end))
-    (t! mt nbs bspc C-bspc)
-    (t! mt ndl del  C-del )
-
-    ;; fn hrm
-    (t! hrm f_l prev lctl)
-    (t! hrm f_d vold lsft)
-    (t! hrm f_u volu lalt)
-    (t! hrm f_r next lmet)
-
-    ;; mouse keys
+;; mouse keys
+(defalias
     msl (movemouse-speed 25)
     mfs (movemouse-speed 200)
     mwu (mwheel-accel-up   $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
@@ -206,8 +203,10 @@
     mmd (movemouse-accel-down $mm-interval $mm-acceleration-time $mm-min $mm-max)
     mml (movemouse-accel-left $mm-interval $mm-acceleration-time $mm-min $mm-max)
     mmr (movemouse-accel-right $mm-interval $mm-acceleration-time $mm-min $mm-max)
+)
 
-    ;; magic-sturdy magic key
+;; magic-sturdy magic key
+(defalias
     mgc (switch
         ((key-history a 1)) o break
         ((key-history b 1)) (macro e f o r e) break
@@ -239,10 +238,12 @@
         ((key-history , 1)) (macro spc b u t) break
         ((key-history . 1)) (macro . /) break
     )
+)
 
-    ;; Tap: repeat after alpha, else sticky-shift |
-    ;; shift-tap/double-tap: caps-word | Hold: shift.
-    ;; magic-sturdy repeat key
+;; Tap: repeat after alpha, else sticky-shift |
+;; shift-tap/double-tap: caps-word | Hold: shift.
+;; magic-sturdy repeat key
+(defalias
     magic-shift-repeat (switch
         ((key-history a 1)) (macro n d) break
         ((key-history i 1)) (macro n g) break
@@ -286,8 +287,10 @@
     )
     magic-shift-tap (fork @magic-shift-repeat @cwc (lsft))
     msf (tap-hold-release $quick-tap-ms $thumb-hold-time @magic-shift-tap lsft)
+)
 
-    ;; thumb keys
+;; thumb keys
+(defalias
     fn_msl (switch
         ((layer mouse)) @msl break
         () @fn break
@@ -302,6 +305,22 @@
     lt1 @msf
     lt2 @smart-num
 )
+
+;; make combo morph
+(deftemplate combo-morph (name norm modded)
+    (defalias
+        $name (switch
+            (lsft (layer nav)) $modded break
+            () $norm break
+        )
+    )
+)
+;; combo morphs
+(t! combo-morph m_lpar_lt   S-9 S-,)
+(t! combo-morph m_rpar_gt   S-0 S-.)
+(t! combo-morph m_lbkt_lbrc [   S-[)
+(t! combo-morph m_rbkt_rbrc ]   S-])
+(t! combo-morph m_q_excl    S-/ S-1)
 
 ;; make combos
 (deftemplate hcombo (keys action)
