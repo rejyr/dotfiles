@@ -309,11 +309,12 @@
 ;; defines a vkey named v-$key, example v-bspc
 ;; and an alias @v-bspc that press and and releases the v-key
 ;; within on-press and on-release respectively.
-;; use virtual keys for tap-hold timings
+;; use virtual keys for combo tap-hold timings
+;; also switch to base layer for smart layers
 (deftemplate v- (key)
   (defvirtualkeys (concat v- $key) $key)
   (defalias (concat v- $key)
-    (multi (on-press press-vkey (concat v- $key)) (on-release release-vkey (concat v- $key))))
+    (multi (on-press tap-vkey def) (on-press press-vkey (concat v- $key)) (on-release release-vkey (concat v- $key))))
 )
 
 ;; make combo morph
@@ -354,6 +355,9 @@
 (t! v- tab)
 (t! v- bspc)
 (t! v- del)
+(t! v- C-c)
+(t! v- C-v)
+(t! v- C-x)
 (t! v- S-2)
 (t! v- S-3)
 (t! v- S-4)
@@ -375,9 +379,9 @@
     (t! hcombo (3 4) @smart-mouse)
     (t! hcombo (w e) @v-tab)
     (t! hcombo (e r) XX)
-    (t! hcombo (s d) C-c)
-    (t! hcombo (d f) C-v)
-    (t! hcombo (s f) C-x)
+    (t! hcombo (s d) @v-C-c)
+    (t! hcombo (d f) @v-C-v)
+    (t! hcombo (s f) @v-C-x)
 
     (t! vcombo (2 w) @v-S-2)
     (t! vcombo (3 e) @v-S-3)
@@ -392,9 +396,9 @@
     (t! hcombo (0 -) @v-del)
     (t! hcombo (o p) @m_lpar_lt)
     (t! hcombo (p [) @m_rpar_gt)
+    (t! hcombo ([ ]) @m_q_excl)
     (t! hcombo (l ;) @m_lbkt_lbrc)
     (t! hcombo (; ') @m_rbkt_rbrc)
-    (t! hcombo (' ret) @m_q_excl)
 
     (t! vcombo (8 i) @v-S-6)
     (t! vcombo (9 o) @v-S-=)
