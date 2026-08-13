@@ -66,8 +66,8 @@
 
 (deflayer mouse
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    @def _    _    _    _    _    _    _    _    _    _    _    _
-  _    @osm @osa @oss @osc _    _    _    mmid @mml @mmd @mmu @mmr _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    @osm @osa @oss @osc @def _    _    mmid @mml @mmd @mmu @mmr _    _
   _    _    _    _    _    _    _    _    _    @mwl @mwd @mwu @mwr      _
   _    _    _    _    @msl @mfs _    mlft mrgt _    _    _              _
   _    _    _              _              _    _    _
@@ -376,9 +376,10 @@
 (t! v- S-\)
 (defchordsv2
     (t! hcombo (2 3) @v-esc)
-    (t! hcombo (3 4) @smart-mouse)
-    (t! hcombo (w e) @v-tab)
+    (t! hcombo (3 4) @v-tab)
+    (t! hcombo (w e) XX)
     (t! hcombo (e r) XX)
+    (t! hcombo (r t) @smart-mouse)
     (t! hcombo (s d) @v-C-c)
     (t! hcombo (d f) @v-C-v)
     (t! hcombo (s f) @v-C-x)
@@ -396,9 +397,9 @@
     (t! hcombo (0 -) @v-del)
     (t! hcombo (o p) @m_lpar_lt)
     (t! hcombo (p [) @m_rpar_gt)
-    (t! hcombo ([ ]) @m_q_excl)
     (t! hcombo (l ;) @m_lbkt_lbrc)
     (t! hcombo (; ') @m_rbkt_rbrc)
+    (t! hcombo (l ') @m_q_excl)
 
     (t! vcombo (8 i) @v-S-6)
     (t! vcombo (9 o) @v-S-=)
