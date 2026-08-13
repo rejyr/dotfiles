@@ -236,7 +236,9 @@
         ((key-history z 1)) XX break
         ((key-history spc 1)) (macro t h e) break
         ((key-history , 1)) (macro spc b u t) break
-        ((key-history . 1)) (macro . /) break
+        ((key-history . 1)) / break
+        ((key-history - 1)) S-. break
+        ((key-history = 1)) S-. break
     )
 )
 
