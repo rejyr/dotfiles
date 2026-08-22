@@ -20,7 +20,7 @@
       };
 
       config = lib.mkIf cfg.enable {
-        time.timeZone = "America/New_York";
+        services.tzupdate.enable = true;
         i18n.defaultLocale = "en_US.UTF-8";
 
         i18n.extraLocaleSettings = {
