@@ -32,7 +32,7 @@ if status is-interactive
     abbr -a -- la "eza -lga"
     abbr -a -- ll "eza -lga"
     abbr -a -- ln "ln -s"
-    abbr -a -- ls "eza -F"
+    abbr -a -- ls "eza -F=always"
     abbr -a -- lt "eza -lga --sort=modified"
     abbr -a -- mkdir "mkdir -p"
     abbr -a -- n "nvim"

@@ -30,7 +30,9 @@
       myFeatures.userRejyr.enable = true;
       networking.hostName = "fw13";
 
-      environment.systemPackages = with pkgs; [];
+      environment.systemPackages = with pkgs; [
+        vscode
+      ];
 
       system.stateVersion = "25.11";
     };
