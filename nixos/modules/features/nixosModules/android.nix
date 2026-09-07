@@ -22,7 +22,7 @@
       config = lib.mkIf cfg.enable {
         environment.systemPackages = with pkgs; [
           android-tools
-          adb-sync
+          better-adb-sync
         ];
       };
     };
