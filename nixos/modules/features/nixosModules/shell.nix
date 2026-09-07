@@ -27,6 +27,8 @@
       config = lib.mkIf cfg.enable {
         myFeatures.nvim.enable = true;
 
+        hjem.users.rejyr.files.".config/atuin/config.toml".source =
+          ../userConfigs/atuin/config.toml;
         hjem.users.rejyr.files.".config/fastfetch/config.jsonc".source =
           ../userConfigs/fastfetch/config.jsonc;
         hjem.users.rejyr.files.".config/fish/config.fish".source = ../userConfigs/fish/config.fish;
