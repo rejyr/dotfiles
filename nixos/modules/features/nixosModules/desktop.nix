@@ -58,6 +58,8 @@
           imv
           mpv
           playerctl
+
+          obsidian
         ];
       };
     };
