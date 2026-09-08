@@ -36,6 +36,13 @@
           user = "rejyr";
           directory = "/home/rejyr";
           clobberFiles = true;
+          xdg.mime-apps.default-applications = {
+            "text/html" = "librewolf.desktop";
+            "x-scheme-handler/http" = "librewolf.desktop";
+            "x-scheme-handler/https" = "librewolf.desktop";
+            "x-scheme-handler/about" = "librewolf.desktop";
+            "x-scheme-handler/unknown" = "librewolf.desktop";
+          };
           files = {
             # cargo
             ".cargo/config.toml".text = ''
