@@ -17,6 +17,7 @@
     in
     {
       imports = [
+        self.nixosModules.ai
         self.nixosModules.clipboard
         self.nixosModules.gaming
         self.nixosModules.gtk
@@ -31,6 +32,7 @@
       };
 
       config = lib.mkIf cfg.enable {
+        myFeatures.ai.enable = lib.mkDefault true;
         myFeatures.clipboard.enable = lib.mkDefault true;
         myFeatures.gaming.enable = lib.mkDefault false;
         myFeatures.gtk.enable = lib.mkDefault true;
