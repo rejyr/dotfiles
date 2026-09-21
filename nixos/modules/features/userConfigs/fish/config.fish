@@ -3,6 +3,20 @@ function fish_greeting
     fastfetch
 end
 
+# mkcd
+function mkcd
+  set dir $argv[1]
+
+  # mkcd temp dir if no args
+  if test -z $dir
+    cd (mktemp -d /tmp/tmp.XXXX)
+    return 0
+  end
+
+  mkdir -p $dir
+  cd $dir
+end
+
 # yazi
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
@@ -39,7 +53,7 @@ if status is-interactive
     abbr -a -- nn "nvim (sk)"
     abbr -a -- rc "rmpc"
     abbr -a -- systl "systemctl"
-    abbr -a -- tree "eza -TF"
+    abbr -a -- tree "eza -TF=always"
     abbr -a -- za "zathura"
     abbr -a -- zz "zathura (sk) &"
 
