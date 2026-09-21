@@ -58,6 +58,9 @@
         myFeatures.texlive.enable = lib.mkDefault true;
         myFeatures.tzLocale.enable = lib.mkDefault true;
 
+        # TODO: move this somewhere better
+        boot.tmp.cleanOnBoot = true;
+
         environment.systemPackages = with pkgs; [
           bash
           nh

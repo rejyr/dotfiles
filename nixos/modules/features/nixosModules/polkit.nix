@@ -20,6 +20,8 @@
       };
 
       config = lib.mkIf cfg.enable {
+        services.gnome.gnome-keyring.enable = true;
+
         security.polkit = {
           enable = true;
           # reboot/poweroff for unprivileged users
