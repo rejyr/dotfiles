@@ -23,7 +23,7 @@
         environment.sessionVariables.EDITOR = lib.mkOverride 901 "nvim";
 
         # string path for symlink
-        hjem.users.rejyr.files.".config/nvim".source = "/home/rejyr/dotfiles/nixos/modules/features/userConfigs/nvim";
+        hjem.users.rejyr.files.".config/nvim".source = "/home/rejyr/dotfiles/userConfigs/nvim";
 
         environment.systemPackages = with pkgs; [
           neovim
