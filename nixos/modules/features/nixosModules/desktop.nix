@@ -50,12 +50,13 @@
           inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 
           foot
-          librewolf
           libnotify
-          ungoogled-chromium
           xdg-desktop-portal-gnome
           xwayland-satellite
           zathura
+
+          google-chrome
+          librewolf
 
           imv
           mpv
