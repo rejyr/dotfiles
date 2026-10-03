@@ -27,14 +27,13 @@
       config = lib.mkIf cfg.enable {
         myFeatures.nvim.enable = true;
 
-        hjem.users.rejyr.files.".config/zellij/config.kdl".source = ../userConfigs/zellij/config.kdl;
-
         environment.systemPackages = with pkgs; [
           selfpkgs.atuin
           selfpkgs.fastfetch
           selfpkgs.fish
           selfpkgs.tmux
           selfpkgs.starship
+          selfpkgs.zellij
           zoxide
 
           bat
@@ -55,7 +54,6 @@
           unzip
           wild
           yazi
-          zellij
           zip
 
           imagemagick

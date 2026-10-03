@@ -89,6 +89,18 @@
         imports = [ wlib.wrapperModules.starship ];
         settings = builtins.fromTOML (builtins.readFile ../userConfigs/starship/starship.toml);
       };
+
+    zellij =
+      { wlib, pkgs, config, ... }:
+      {
+        imports = [ wlib.modules.default ];
+        package = pkgs.zellij;
+        constructFiles.config = {
+          content = builtins.readFile ../userConfigs/zellij/config.kdl;
+          relPath = "config.kdl";
+        };
+        env.ZELLIJ_CONFIG_FILE = config.constructFiles.config.path;
+      };
   };
 
   flake.nixosModules = builtins.mapAttrs (_: v: v.install) self.wrappers;
