@@ -195,6 +195,19 @@ later(function()
   require('yanky').setup()
 end)
 
+-- git
+later(function()
+  require('diffview').setup {}
+
+  require('neogit').setup {
+    integrations = {
+      diffview = true,
+      fzf_lua = true,
+    },
+    diff_viewer = "diffview",
+  }
+end)
+
 -- better quickfix
 later(function()
   require('quicker').setup()

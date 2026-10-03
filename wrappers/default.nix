@@ -131,9 +131,12 @@
           quicker-nvim
           rainbow-delimiters-nvim
           rustaceanvim
-          vim-fugitive
           vimtex
           yanky-nvim
+
+          neogit
+          diffview-nvim
+          gitsigns-nvim
         ];
         runtimePkgs = with pkgs; [
           tree-sitter

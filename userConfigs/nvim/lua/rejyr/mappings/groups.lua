@@ -74,8 +74,8 @@ local groups = {
     mappings = {
       { '<leader>gb', '<cmd>FzfLua git_branches<cr>', { desc = 'branches' } },
       { '<leader>gc', '<cmd>FzfLua git_commits<cr>', { desc = 'log' } },
-      { '<leader>gg', '<cmd>Git<cr>', { desc = 'Fugitive' } },
-      { '<leader>gp', '<cmd>Git push<cr>', { desc = 'Fugitive Git Push' } },
+      { '<leader>gg', '<cmd>Neogit<cr>', { desc = 'Neogit' } },
+      { '<leader>gp', '<cmd>Neogit push<cr>', { desc = 'Neogit Push' } },
     },
   },
   {
