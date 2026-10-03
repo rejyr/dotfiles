@@ -75,6 +75,20 @@
       {
         imports = [ wlib.wrapperModules.tmux ];
       };
+
+    fish =
+      { wlib, pkgs, ... }:
+      {
+        imports = [ wlib.wrapperModules.fish ];
+        configFile.content = builtins.readFile ../userConfigs/fish/config.fish;
+      };
+
+    starship =
+      { wlib, pkgs, ... }:
+      {
+        imports = [ wlib.wrapperModules.starship ];
+        settings = builtins.fromTOML (builtins.readFile ../userConfigs/starship/starship.toml);
+      };
   };
 
   flake.nixosModules = builtins.mapAttrs (_: v: v.install) self.wrappers;

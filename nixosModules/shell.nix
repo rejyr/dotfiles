@@ -27,17 +27,14 @@
       config = lib.mkIf cfg.enable {
         myFeatures.nvim.enable = true;
 
-        hjem.users.rejyr.files.".config/fish/config.fish".source = ../userConfigs/fish/config.fish;
-        hjem.users.rejyr.files.".config/starship.toml".source = ../userConfigs/starship/starship.toml;
         hjem.users.rejyr.files.".config/zellij/config.kdl".source = ../userConfigs/zellij/config.kdl;
 
         environment.systemPackages = with pkgs; [
           selfpkgs.atuin
           selfpkgs.fastfetch
-          # selfpkgs.fish
-          fish
+          selfpkgs.fish
           selfpkgs.tmux
-          starship
+          selfpkgs.starship
           zoxide
 
           bat
