@@ -4,6 +4,43 @@
   ...
 }:
 {
+  flake.shellPackages =
+    { pkgs, selfpkgs }:
+    with pkgs;
+    [
+      selfpkgs.atuin
+      selfpkgs.fastfetch
+      selfpkgs.fish
+      selfpkgs.tmux
+      selfpkgs.starship
+      selfpkgs.zellij
+
+      selfpkgs.neovim
+
+      bat
+      bottom
+      clang
+      dust
+      eza
+      fd
+      fzf
+      gcc
+      gh
+      git
+      jq
+      ripgrep
+      rsync
+      skim
+      unrar
+      unzip
+      wild
+      yazi
+      zip
+      zoxide
+
+      imagemagick
+    ];
+
   flake.nixosModules.shell =
     {
       config,
@@ -26,39 +63,7 @@
       config = lib.mkIf cfg.enable {
         environment.sessionVariables.EDITOR = lib.mkOverride 901 "nvim";
 
-        environment.systemPackages = with pkgs; [
-          selfpkgs.atuin
-          selfpkgs.fastfetch
-          selfpkgs.fish
-          selfpkgs.tmux
-          selfpkgs.starship
-          selfpkgs.zellij
-
-          selfpkgs.neovim
-
-          bat
-          bottom
-          clang
-          dust
-          eza
-          fd
-          fzf
-          gcc
-          gh
-          git
-          jq
-          ripgrep
-          rsync
-          skim
-          unrar
-          unzip
-          wild
-          yazi
-          zip
-          zoxide
-
-          imagemagick
-        ];
+        environment.systemPackages = self.shellPackages { inherit pkgs selfpkgs; };
       };
     };
 }
