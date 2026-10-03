@@ -24,6 +24,9 @@
         imports = [ wlib.wrapperModules.fish ];
         configFile.content = builtins.readFile ../userConfigs/fish/config.fish;
         plugins = [ pkgs.fishPlugins.fzf-fish ];
+        # read .config for history
+        # also reads who knows what
+        flags."--no-config" = false;
       };
 
     starship =

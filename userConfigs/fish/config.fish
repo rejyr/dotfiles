@@ -1,3 +1,7 @@
+# empty fish_greeting for manual startup
+function fish_greeting
+end
+
 # mkcd
 function mkcd
   set dir $argv[1]
