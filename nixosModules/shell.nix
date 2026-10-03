@@ -17,7 +17,6 @@
     in
     {
       imports = [
-        self.nixosModules.nvim
       ];
 
       options.myFeatures.shell = {
@@ -25,7 +24,7 @@
       };
 
       config = lib.mkIf cfg.enable {
-        myFeatures.nvim.enable = true;
+        environment.sessionVariables.EDITOR = lib.mkOverride 901 "nvim";
 
         environment.systemPackages = with pkgs; [
           selfpkgs.atuin
@@ -34,7 +33,8 @@
           selfpkgs.tmux
           selfpkgs.starship
           selfpkgs.zellij
-          zoxide
+
+          selfpkgs.neovim
 
           bat
           bottom
@@ -55,6 +55,7 @@
           wild
           yazi
           zip
+          zoxide
 
           imagemagick
         ];

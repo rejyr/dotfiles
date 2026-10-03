@@ -91,7 +91,12 @@
       };
 
     zellij =
-      { wlib, pkgs, config, ... }:
+      {
+        wlib,
+        pkgs,
+        config,
+        ...
+      }:
       {
         imports = [ wlib.modules.default ];
         package = pkgs.zellij;
@@ -100,6 +105,67 @@
           relPath = "config.kdl";
         };
         env.ZELLIJ_CONFIG_FILE = config.constructFiles.config.path;
+      };
+
+    neovim =
+      { wlib, pkgs, ... }:
+      {
+        imports = [ wlib.wrapperModules.neovim ];
+        # remove unused remote plugin hosts
+        hosts = {
+          python3.nvim-host.enable = false;
+          node.nvim-host.enable = false;
+          ruby.nvim-host.enable = false;
+        };
+        specs.general = with pkgs.vimPlugins; [
+          blink-cmp
+          conform-nvim
+          everforest
+          fzf-lua
+          mini-nvim
+          nvim-lspconfig
+          nvim-treesitter.withAllGrammars
+          nvim-navbuddy
+          nvim-navic
+          nui-nvim
+          quicker-nvim
+          rainbow-delimiters-nvim
+          rustaceanvim
+          vim-fugitive
+          vimtex
+          yanky-nvim
+        ];
+        runtimePkgs = with pkgs; [
+          tree-sitter
+
+          basedpyright
+          bash-language-server
+          clang-tools
+          emmet-language-server
+          eslint
+          harper
+          jdt-language-server
+          lua-language-server
+          nil
+          ruff
+          rust-analyzer
+          sqls
+          taplo
+          texlab
+          typescript-language-server
+          vscode-css-languageserver
+          vscode-json-languageserver
+          # vscode-langservers-extracted
+
+          eslint_d
+          selene
+
+          python314Packages.autopep8
+          prettier
+          stylua
+          nixfmt
+        ];
+        settings.config_directory = ../userConfigs/nvim;
       };
   };
 
