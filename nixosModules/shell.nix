@@ -19,26 +19,18 @@
 
       bat
       bottom
-      clang
       dust
       eza
       fd
       fzf
-      gcc
       gh
       git
       jq
       ripgrep
       rsync
       skim
-      unrar
-      unzip
-      wild
       yazi
-      zip
       zoxide
-
-      imagemagick
     ];
 
   flake.nixosModules.shell =
@@ -51,6 +43,16 @@
     let
       cfg = config.myFeatures.shell;
       selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
+      otherShellPackages = with pkgs; [
+        clang
+        gcc
+        unrar
+        unzip
+        zip
+        wild
+
+        imagemagick
+      ];
     in
     {
       imports = [
@@ -63,7 +65,7 @@
       config = lib.mkIf cfg.enable {
         environment.sessionVariables.EDITOR = lib.mkOverride 901 "nvim";
 
-        environment.systemPackages = self.shellPackages { inherit pkgs selfpkgs; };
+        environment.systemPackages = self.shellPackages { inherit pkgs selfpkgs; } ++ otherShellPackages;
       };
     };
 }
