@@ -1,12 +1,16 @@
-{ inputs, ... }:
+{
+  inputs,
+  ...
+}:
 {
   imports = [
+    inputs.wrappers.flakeModules.wrappers
   ];
 
   options = {
   };
 
-  config.systems = [
-    "x86_64-linux"
-  ];
+  config = {
+    systems = inputs.nixpkgs.lib.platforms.all;
+  };
 }

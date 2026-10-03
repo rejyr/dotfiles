@@ -13,9 +13,6 @@
 
   flake.nixosModules.fw13Module =
     { pkgs, lib, ... }:
-    let
-      selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
-    in
     {
       imports = [
         self.nixosModules.fw13Hardware

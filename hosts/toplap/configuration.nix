@@ -13,9 +13,6 @@
 
   flake.nixosModules.toplapModule =
     { pkgs, lib, ... }:
-    let
-      selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
-    in
     {
       imports = [
         self.nixosModules.toplapHardware

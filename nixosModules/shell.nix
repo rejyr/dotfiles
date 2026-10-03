@@ -27,17 +27,16 @@
       config = lib.mkIf cfg.enable {
         myFeatures.nvim.enable = true;
 
-        hjem.users.rejyr.files.".config/atuin/config.toml".source =
-          ../userConfigs/atuin/config.toml;
-        hjem.users.rejyr.files.".config/fastfetch/config.jsonc".source =
-          ../userConfigs/fastfetch/config.jsonc;
         hjem.users.rejyr.files.".config/fish/config.fish".source = ../userConfigs/fish/config.fish;
         hjem.users.rejyr.files.".config/starship.toml".source = ../userConfigs/starship/starship.toml;
         hjem.users.rejyr.files.".config/zellij/config.kdl".source = ../userConfigs/zellij/config.kdl;
 
         environment.systemPackages = with pkgs; [
-          atuin
+          selfpkgs.atuin
+          selfpkgs.fastfetch
+          # selfpkgs.fish
           fish
+          selfpkgs.tmux
           starship
           zoxide
 
@@ -46,7 +45,6 @@
           clang
           dust
           eza
-          fastfetch
           fd
           fzf
           gcc

@@ -13,7 +13,6 @@
     }:
     let
       cfg = config.myFeatureGroups.desktop;
-      selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
     in
     {
       imports = [
