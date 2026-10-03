@@ -5,15 +5,6 @@
 }:
 {
   flake.wrappers = {
-    atuin =
-      { wlib, pkgs, ... }:
-      {
-        imports = [ wlib.wrapperModules.atuin ];
-        settings = {
-          filter_mode_shell_up_key_binding = "session";
-        };
-      };
-
     fastfetch =
       { wlib, pkgs, ... }:
       {
@@ -32,6 +23,7 @@
       {
         imports = [ wlib.wrapperModules.fish ];
         configFile.content = builtins.readFile ../userConfigs/fish/config.fish;
+        plugins = [ pkgs.fishPlugins.fzf-fish ];
       };
 
     starship =

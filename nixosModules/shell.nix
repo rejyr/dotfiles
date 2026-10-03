@@ -8,7 +8,6 @@
     { pkgs, selfpkgs }:
     with pkgs;
     [
-      selfpkgs.atuin
       selfpkgs.fastfetch
       selfpkgs.fish
       selfpkgs.tmux

@@ -81,7 +81,6 @@ if status is-interactive
     abbr -a -- zz "zathura (sk) &"
 
     # addon startups
-    atuin init fish | source
     starship init fish | source
     zoxide init fish | source
 
