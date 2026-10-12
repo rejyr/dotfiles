@@ -65,6 +65,7 @@
           bash
           nh
           nixfmt
+          nodejs
           python3
           rustup
           uv
