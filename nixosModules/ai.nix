@@ -29,6 +29,9 @@
           claudebox
           sandbox-runtime
           skills
+
+          chatgpt
+          grok-bot
         ];
       };
     };

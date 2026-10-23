@@ -27,6 +27,9 @@
       myFeatures.userRejyr.enable = true;
       networking.hostName = "fw13";
 
+      # TODO: reorganize
+      programs.kdeconnect.enable = true;
+
       environment.systemPackages = with pkgs; [
         vscode
       ];
