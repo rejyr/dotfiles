@@ -30,8 +30,15 @@
       # TODO: reorganize
       programs.kdeconnect.enable = true;
 
+      # for zotero
+      nixpkgs.config.permittedInsecurePackages = [
+        "firefox-esr-140-bin-unwrapped-140.17.0esr"
+      ];
+
       environment.systemPackages = with pkgs; [
         vscode
+        zotero
+        gleam
       ];
 
       system.stateVersion = "25.11";

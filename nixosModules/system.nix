@@ -66,6 +66,7 @@
           nh
           nixfmt
           nodejs
+          pnpm
           python3
           rustup
           uv
