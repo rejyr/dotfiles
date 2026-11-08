@@ -36,7 +36,7 @@
         myFeatures.gaming.enable = lib.mkDefault false;
         myFeatures.gtk.enable = lib.mkDefault true;
         myFeatures.fonts.enable = lib.mkDefault true;
-        myFeatures.photography.enable = lib.mkDefault true;
+        myFeatures.photography.enable = lib.mkDefault false;
         myFeatures.polkit.enable = lib.mkDefault true;
         myFeatures.wallpapers.enable = lib.mkDefault true;
 

@@ -30,7 +30,6 @@
           skills
 
           chatgpt
-          grok-bot
         ];
       };
     };

@@ -27,9 +27,6 @@
       myFeatures.userRejyr.enable = true;
       networking.hostName = "fw13";
 
-      # TODO: reorganize
-      programs.kdeconnect.enable = true;
-
       # for zotero
       nixpkgs.config.permittedInsecurePackages = [
         "firefox-esr-140-bin-unwrapped-140.17.0esr"

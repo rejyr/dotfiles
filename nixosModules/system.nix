@@ -40,19 +40,19 @@
 
       config = lib.mkIf cfg.enable {
         myFeatures.audio.enable = lib.mkDefault true;
-        myFeatures.android.enable = lib.mkDefault true;
+        myFeatures.android.enable = lib.mkDefault false;
         myFeatures.bluetooth.enable = lib.mkDefault true;
         myFeatures.bootloader.enable = lib.mkDefault true;
         myFeatures.docker.enable = lib.mkDefault true;
         myFeatures.geoclue2.enable = lib.mkDefault true;
-        myFeatures.ios.enable = lib.mkDefault true;
+        myFeatures.ios.enable = lib.mkDefault false;
         myFeatures.keyboard.enable = lib.mkDefault true;
-        myFeatures.keyboard.qmk.enable = lib.mkDefault true;
-        myFeatures.keyboard.kanata.enable = lib.mkDefault true;
+        myFeatures.keyboard.qmk.enable = lib.mkDefault false;
+        myFeatures.keyboard.kanata.enable = lib.mkDefault false;
         myFeatures.mpd.enable = lib.mkDefault true;
         myFeatures.networking.enable = lib.mkDefault true;
         myFeatures.nix.enable = lib.mkDefault true;
-        myFeatures.printing.enable = lib.mkDefault true;
+        myFeatures.printing.enable = lib.mkDefault false;
         myFeatures.powerManagement.enable = lib.mkDefault true;
         myFeatures.shell.enable = lib.mkDefault true;
         myFeatures.texlive.enable = lib.mkDefault true;
