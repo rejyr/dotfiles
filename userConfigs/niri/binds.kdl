@@ -15,7 +15,7 @@ binds {
     Mod+Ctrl+W { spawn-sh "noctalia msg wallpaper-random"; }
 
     // spawn programs
-    Mod+Return { spawn "foot"; }
+    Mod+Return { spawn "kitty" "--single-instance"; }
     Mod+Alt+Return { spawn "librewolf"; }
     Mod+D { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+S { spawn-sh "noctalia msg panel-toggle control-center"; }

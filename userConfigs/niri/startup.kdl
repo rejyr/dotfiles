@@ -1,1 +1,2 @@
 spawn-at-startup "noctalia"
+spawn-at-startup "kitty" "--single-instance" "--start-as=hidden"
