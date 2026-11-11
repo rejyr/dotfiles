@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ self, inputs, lib, ... }:
 {
   perSystem =
     { system, config, ... }:
@@ -8,15 +8,15 @@
         inherit system;
         config.allowUnfree = true;
       };
+      selfpkgs = config.packages;
     in
     {
       devShells.default = pkgs.mkShell {
         packages = self.shellPackages {
-          inherit pkgs;
-          selfpkgs = config.packages;
+          inherit pkgs selfpkgs;
         };
         shellHook = ''
-          exec fish
+          ${lib.getExe selfpkgs.fish}
         '';
       };
     };
